@@ -1,0 +1,6 @@
+framework module Pods_Sipenope {
+  umbrella header "Pods-Sipenope-umbrella.h"
+
+  export *
+  module * { export * }
+}
