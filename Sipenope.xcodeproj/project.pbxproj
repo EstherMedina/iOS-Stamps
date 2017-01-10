@@ -7,15 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112F82B5DC0797655A58CD0B /* Pods_Sipenope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */; };
 		FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */; };
 		FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */; };
 		FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E201E24D97100AD8B41 /* SecondViewController.swift */; };
 		FEB75E241E24D97100AD8B41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEB75E221E24D97100AD8B41 /* Main.storyboard */; };
 		FEB75E261E24D97100AD8B41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEB75E251E24D97100AD8B41 /* Assets.xcassets */; };
 		FEB75E291E24D97100AD8B41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEB75E271E24D97100AD8B41 /* LaunchScreen.storyboard */; };
+		FEB75E3A1E24F8FA00AD8B41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E391E24F8FA00AD8B41 /* User.swift */; };
+		FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E3B1E24F92F00AD8B41 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A084A92806A68508BAC0DF4 /* Pods-Sipenope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sipenope.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sipenope/Pods-Sipenope.debug.xcconfig"; sourceTree = "<group>"; };
+		BE007AD0C8D86428E74F93F7 /* Pods-Sipenope.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sipenope.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sipenope/Pods-Sipenope.release.xcconfig"; sourceTree = "<group>"; };
+		F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sipenope.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB75E191E24D97100AD8B41 /* Sipenope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sipenope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +30,9 @@
 		FEB75E251E24D97100AD8B41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FEB75E281E24D97100AD8B41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FEB75E2A1E24D97100AD8B41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEB75E301E24DFD600AD8B41 /* Sipenope-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sipenope-Bridging-Header.h"; sourceTree = "<group>"; };
+		FEB75E391E24F8FA00AD8B41 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		FEB75E3B1E24F92F00AD8B41 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +40,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				112F82B5DC0797655A58CD0B /* Pods_Sipenope.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30F8B4CF282ACF580FEAF2E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A084A92806A68508BAC0DF4 /* Pods-Sipenope.debug.xcconfig */,
+				BE007AD0C8D86428E74F93F7 /* Pods-Sipenope.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		53D2A5976E391D8DD318F0FB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEB75E101E24D97100AD8B41 = {
 			isa = PBXGroup;
 			children = (
 				FEB75E1B1E24D97100AD8B41 /* Sipenope */,
+				FEB75E321E24F5AF00AD8B41 /* Resources */,
 				FEB75E1A1E24D97100AD8B41 /* Products */,
+				30F8B4CF282ACF580FEAF2E5 /* Pods */,
+				53D2A5976E391D8DD318F0FB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,14 +87,73 @@
 			isa = PBXGroup;
 			children = (
 				FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */,
-				FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */,
-				FEB75E201E24D97100AD8B41 /* SecondViewController.swift */,
-				FEB75E221E24D97100AD8B41 /* Main.storyboard */,
-				FEB75E251E24D97100AD8B41 /* Assets.xcassets */,
-				FEB75E271E24D97100AD8B41 /* LaunchScreen.storyboard */,
-				FEB75E2A1E24D97100AD8B41 /* Info.plist */,
+				FEB75E331E24F60600AD8B41 /* Model */,
+				FEB75E341E24F62400AD8B41 /* View */,
+				FEB75E351E24F62A00AD8B41 /* Controller */,
 			);
 			path = Sipenope;
+			sourceTree = "<group>";
+		};
+		FEB75E321E24F5AF00AD8B41 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FEB75E251E24D97100AD8B41 /* Assets.xcassets */,
+				FEB75E2A1E24D97100AD8B41 /* Info.plist */,
+				FEB75E301E24DFD600AD8B41 /* Sipenope-Bridging-Header.h */,
+			);
+			name = Resources;
+			path = Sipenope;
+			sourceTree = "<group>";
+		};
+		FEB75E331E24F60600AD8B41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FEB75E391E24F8FA00AD8B41 /* User.swift */,
+				FEB75E3B1E24F92F00AD8B41 /* Message.swift */,
+				FEB75E371E24F6A600AD8B41 /* Daos */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		FEB75E341E24F62400AD8B41 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FEB75E221E24D97100AD8B41 /* Main.storyboard */,
+				FEB75E271E24D97100AD8B41 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		FEB75E351E24F62A00AD8B41 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				FEB75E361E24F68C00AD8B41 /* Login */,
+				FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */,
+				FEB75E201E24D97100AD8B41 /* SecondViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		FEB75E361E24F68C00AD8B41 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		FEB75E371E24F6A600AD8B41 /* Daos */ = {
+			isa = PBXGroup;
+			children = (
+				FEB75E381E24F6B600AD8B41 /* Parse */,
+			);
+			name = Daos;
+			sourceTree = "<group>";
+		};
+		FEB75E381E24F6B600AD8B41 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FEB75E2D1E24D97100AD8B41 /* Build configuration list for PBXNativeTarget "Sipenope" */;
 			buildPhases = (
+				90CAA052C804A73C45760765 /* [CP] Check Pods Manifest.lock */,
 				FEB75E151E24D97100AD8B41 /* Sources */,
 				FEB75E161E24D97100AD8B41 /* Frameworks */,
 				FEB75E171E24D97100AD8B41 /* Resources */,
+				3794F6657A788F9633A8B055 /* [CP] Embed Pods Frameworks */,
+				7B58792F4D2B4F4D5605DFBE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -99,6 +191,7 @@
 				TargetAttributes = {
 					FEB75E181E24D97100AD8B41 = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 5MKK64EPKX;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -134,12 +227,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3794F6657A788F9633A8B055 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sipenope/Pods-Sipenope-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7B58792F4D2B4F4D5605DFBE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Sipenope/Pods-Sipenope-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90CAA052C804A73C45760765 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FEB75E151E24D97100AD8B41 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEB75E3A1E24F8FA00AD8B41 /* User.swift in Sources */,
 				FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */,
+				FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */,
 				FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */,
 				FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */,
 			);
@@ -262,8 +405,10 @@
 		};
 		FEB75E2E1E24D97100AD8B41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A084A92806A68508BAC0DF4 /* Pods-Sipenope.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5MKK64EPKX;
 				INFOPLIST_FILE = Sipenope/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.home.Sipenope;
@@ -274,8 +419,10 @@
 		};
 		FEB75E2F1E24D97100AD8B41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE007AD0C8D86428E74F93F7 /* Pods-Sipenope.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5MKK64EPKX;
 				INFOPLIST_FILE = Sipenope/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.home.Sipenope;
@@ -303,6 +450,7 @@
 				FEB75E2F1E24D97100AD8B41 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
