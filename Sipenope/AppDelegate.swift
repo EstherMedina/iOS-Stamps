@@ -101,6 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        }
         
         
+        
+
+        
+        
         //PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
         return true
         //return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)

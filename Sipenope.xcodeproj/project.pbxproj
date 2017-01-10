@@ -16,6 +16,10 @@
 		FEB75E291E24D97100AD8B41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEB75E271E24D97100AD8B41 /* LaunchScreen.storyboard */; };
 		FEB75E3A1E24F8FA00AD8B41 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E391E24F8FA00AD8B41 /* User.swift */; };
 		FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E3B1E24F92F00AD8B41 /* Message.swift */; };
+		FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E3D1E250BF500AD8B41 /* DAOFactory.swift */; };
+		FEB75E401E250D4F00AD8B41 /* UserInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */; };
+		FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */; };
+		FEB75E441E25105D00AD8B41 /* SipeNope.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEB75E431E25105D00AD8B41 /* SipeNope.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +37,10 @@
 		FEB75E301E24DFD600AD8B41 /* Sipenope-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sipenope-Bridging-Header.h"; sourceTree = "<group>"; };
 		FEB75E391E24F8FA00AD8B41 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FEB75E3B1E24F92F00AD8B41 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		FEB75E3D1E250BF500AD8B41 /* DAOFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAOFactory.swift; sourceTree = "<group>"; };
+		FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoDAO.swift; sourceTree = "<group>"; };
+		FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoImpl.swift; sourceTree = "<group>"; };
+		FEB75E431E25105D00AD8B41 /* SipeNope.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SipeNope.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,7 @@
 			children = (
 				FEB75E251E24D97100AD8B41 /* Assets.xcassets */,
 				FEB75E2A1E24D97100AD8B41 /* Info.plist */,
+				FEB75E431E25105D00AD8B41 /* SipeNope.plist */,
 				FEB75E301E24DFD600AD8B41 /* Sipenope-Bridging-Header.h */,
 			);
 			name = Resources;
@@ -144,6 +153,8 @@
 		FEB75E371E24F6A600AD8B41 /* Daos */ = {
 			isa = PBXGroup;
 			children = (
+				FEB75E3D1E250BF500AD8B41 /* DAOFactory.swift */,
+				FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */,
 				FEB75E381E24F6B600AD8B41 /* Parse */,
 			);
 			name = Daos;
@@ -152,6 +163,7 @@
 		FEB75E381E24F6B600AD8B41 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -222,6 +234,7 @@
 				FEB75E291E24D97100AD8B41 /* LaunchScreen.storyboard in Resources */,
 				FEB75E261E24D97100AD8B41 /* Assets.xcassets in Resources */,
 				FEB75E241E24D97100AD8B41 /* Main.storyboard in Resources */,
+				FEB75E441E25105D00AD8B41 /* SipeNope.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,9 +294,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEB75E3A1E24F8FA00AD8B41 /* User.swift in Sources */,
+				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
+				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
 				FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */,
 				FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */,
 				FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */,
+				FEB75E401E250D4F00AD8B41 /* UserInfoDAO.swift in Sources */,
 				FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
