@@ -9,7 +9,10 @@
 import UIKit
 import Parse
 import Bolts
-
+import FBSDKShareKit
+import FBSDKCoreKit
+import FBSDKLoginKit
+import ParseFacebookUtilsV4
 
 
 @UIApplicationMain
@@ -22,10 +25,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - UIApplicationDelegate
     //--------------------------------------
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    //func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
-        Parse.enableLocalDatastore()
+        
+        let connectInfoDAO = DAOFactory.sharedInstance.connectInfoDAO
+        connectInfoDAO?.newConnection(applicationId: "f9e39ebf8fa0a4aaf9a8111d4c504b630d8ee3df", clientKey: "13939de200f1cefbbc6bf3acc385ba67689aa5be", server: "http://ec2-54-229-104-119.eu-west-1.compute.amazonaws.com:80/parse", isLocalDatastoreEnabled: true)
+        
+        /*Parse.enableLocalDatastore()
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
             ParseMutableClientConfiguration.applicationId = "f9e39ebf8fa0a4aaf9a8111d4c504b630d8ee3df"
@@ -35,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         Parse.enableLocalDatastore()
         Parse.initialize(with: parseConfiguration)
-        
+        */
         
         
         // ****************************************************************************
@@ -101,11 +110,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //        }
         
         
-        
+        PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
 
-        
-        
-        //PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
         return true
         //return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -130,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
      }*/
     
-    /*func application(application: UIApplication,
+    func application(application: UIApplication,
                      openURL url: NSURL,
                      sourceApplication: String?,
                      annotation: AnyObject?) -> Bool {
@@ -142,7 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             annotation: annotation)
         
     }
- */
+ 
 
 
     func applicationWillResignActive(_ application: UIApplication) {

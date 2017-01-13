@@ -10,27 +10,43 @@ import CoreLocation
 
 class User: NSObject {
     
-    var name: String!
-    var gender : Bool?
-    var image : UIImage?
-    var birthdate : Date?
-    var email: String!
     var objectId : String!
+    var name: String!
+    var nickname : String = ""
+    var email: String!
+    var image : UIImage?
     var isFriend : Bool = false
-    var nickName : String?
     var location : CLLocationCoordinate2D?
-    var radius : Double
+    var radius : Double = 100.0
+
     
-    
-    init(name: String, email: String, objectId: String, radius: Double, gender: Bool?, image: UIImage?, birthdate: Date?) {
-        self.name = name
-        self.email = email
+    init(objectId : String, name: String, nickname: String, email: String) {
+        super.init()
+        
         self.objectId = objectId
-        self.gender = gender
+        self.name = name
+        self.nickname = (nickname == "") ? self.getNicknameFromEmail(email: self.email) : nickname
+        self.email = email
+    }
+    
+    func getNicknameFromEmail(email: String) -> String {
+        return (self.nickname == "") ? (email.components(separatedBy: "@")[0].capitalized) : self.nickname
+    }
+    
+    func setImage(image: UIImage) {
         self.image = image
-        self.birthdate = birthdate
+    }
+    
+    func setLocationArea(location: CLLocationCoordinate2D, radius: Double) {
+        self.location = location
         self.radius = radius
     }
+    
+    func isFriend(isFriend: Bool) {
+        self.isFriend = isFriend
+    }
+    
+    
     
     
 }

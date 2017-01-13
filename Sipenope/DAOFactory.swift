@@ -12,9 +12,31 @@ import UIKit
 
 class DAOFactory: NSObject {
 
-    static let shareInstance: DAOFactory = DAOFactory()
+    static  let notificationNameLoadMessages = "MessagesLoaded"
+    static let sharedInstance: DAOFactory = DAOFactory()
+    var connectInfoDAO: ConnectInfoDAO?
     var userInfoDAO: UserInfoDAO?
+    var messageInfoDAO: MessageInfoDAO?
+    
     var plistData: [String: String] = [:] //Our data
+    
+
+    override init() {
+        super.init()
+        
+        readPropertyList(name: "SipeNope", ext: "plist")
+        if plistData != [:]{
+            if plistData["datastore"] == "Parse" {
+                if (plistData["classnameuser"] != nil) {
+                    self.userInfoDAO = UserInfoImpl(plistData: self.plistData)
+                }
+                if (plistData["classnamemessage"] != nil) {
+                    self.messageInfoDAO = MessageInfoImpl(plistData: self.plistData)
+                }
+                self.connectInfoDAO = ConnectInfoImpl()
+            }
+        }
+    }
     
     
     func readPropertyList(name: String, ext: String)  {
@@ -32,20 +54,7 @@ class DAOFactory: NSObject {
         
         
     }
-    
-    
-    override init() {
-        super.init()
-        
-        readPropertyList(name: "SipeNope", ext: "plist")
-        if plistData != [:]{
-            if plistData["datastore"] == "Parse" {
-                userInfoDAO = UserInfoImpl()
-            }
-        }
-        
-        
-    }
+
     
     
     

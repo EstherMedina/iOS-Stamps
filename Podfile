@@ -5,11 +5,19 @@ target 'Sipenope' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   
-  #pod 'Parse-iOS-SDK'
-  pod 'Parse'
-
-  pod 'ParseUI'
-
   # Pods for Sipenope
+  # Pods for PARSE
+  pod 'Parse'
+  pod 'ParseUI'
+  
+  # Pods for JSQMessagesViewController
+  pod 'JSQMessagesViewController'
+  
+  # Pods for Facebok
+  #pod 'Facebook-iOS-SDK' #--> deprecated
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKShareKit'
+  pod 'ParseFacebookUtilsV4'
 
 end

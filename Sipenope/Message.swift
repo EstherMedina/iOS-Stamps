@@ -20,11 +20,16 @@ class Message: NSObject {
     
     
     init(objectId: String, senderId: String, receiverId: String, message: String?, image: UIImage?, creationDate: Date) {
-        self.objectId = senderId
-        self.senderId = receiverId
-        self.receiverId = objectId
-        self.message = message
-        self.image = image
+        self.objectId = objectId
+        self.senderId = senderId
+        self.receiverId = receiverId
+        if message != nil {
+            self.message = message
+            self.image = nil
+        } else {
+            self.message = nil
+            self.image = image
+        }
         self.creationDate = creationDate
     }
     

@@ -20,6 +20,12 @@
 		FEB75E401E250D4F00AD8B41 /* UserInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */; };
 		FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */; };
 		FEB75E441E25105D00AD8B41 /* SipeNope.plist in Resources */ = {isa = PBXBuildFile; fileRef = FEB75E431E25105D00AD8B41 /* SipeNope.plist */; };
+		FEB75E471E2622B200AD8B41 /* chatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E461E2622B200AD8B41 /* chatVC.swift */; };
+		FEB75E491E262EA100AD8B41 /* MessageInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E481E262EA100AD8B41 /* MessageInfoImpl.swift */; };
+		FEB75E4B1E262EC300AD8B41 /* MessageInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E4A1E262EC300AD8B41 /* MessageInfoDAO.swift */; };
+		FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E4C1E265C2400AD8B41 /* LoginVC.swift */; };
+		FEB75E4F1E290D7A00AD8B41 /* ConnectInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E4E1E290D7A00AD8B41 /* ConnectInfoImpl.swift */; };
+		FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E501E290DAC00AD8B41 /* ConnectInfoDAO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +47,12 @@
 		FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoDAO.swift; sourceTree = "<group>"; };
 		FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoImpl.swift; sourceTree = "<group>"; };
 		FEB75E431E25105D00AD8B41 /* SipeNope.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SipeNope.plist; sourceTree = "<group>"; };
+		FEB75E461E2622B200AD8B41 /* chatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatVC.swift; sourceTree = "<group>"; };
+		FEB75E481E262EA100AD8B41 /* MessageInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInfoImpl.swift; sourceTree = "<group>"; };
+		FEB75E4A1E262EC300AD8B41 /* MessageInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInfoDAO.swift; sourceTree = "<group>"; };
+		FEB75E4C1E265C2400AD8B41 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		FEB75E4E1E290D7A00AD8B41 /* ConnectInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectInfoImpl.swift; sourceTree = "<group>"; };
+		FEB75E501E290DAC00AD8B41 /* ConnectInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectInfoDAO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				FEB75E361E24F68C00AD8B41 /* Login */,
+				FEB75E451E26225600AD8B41 /* Chat */,
 				FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */,
 				FEB75E201E24D97100AD8B41 /* SecondViewController.swift */,
 			);
@@ -146,6 +159,7 @@
 		FEB75E361E24F68C00AD8B41 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				FEB75E4C1E265C2400AD8B41 /* LoginVC.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -154,7 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				FEB75E3D1E250BF500AD8B41 /* DAOFactory.swift */,
+				FEB75E501E290DAC00AD8B41 /* ConnectInfoDAO.swift */,
 				FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */,
+				FEB75E4A1E262EC300AD8B41 /* MessageInfoDAO.swift */,
 				FEB75E381E24F6B600AD8B41 /* Parse */,
 			);
 			name = Daos;
@@ -163,9 +179,19 @@
 		FEB75E381E24F6B600AD8B41 /* Parse */ = {
 			isa = PBXGroup;
 			children = (
+				FEB75E4E1E290D7A00AD8B41 /* ConnectInfoImpl.swift */,
 				FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */,
+				FEB75E481E262EA100AD8B41 /* MessageInfoImpl.swift */,
 			);
 			name = Parse;
+			sourceTree = "<group>";
+		};
+		FEB75E451E26225600AD8B41 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FEB75E461E2622B200AD8B41 /* chatVC.swift */,
+			);
+			name = Chat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,13 +320,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEB75E3A1E24F8FA00AD8B41 /* User.swift in Sources */,
+				FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */,
 				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
+				FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */,
 				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
 				FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */,
+				FEB75E471E2622B200AD8B41 /* chatVC.swift in Sources */,
+				FEB75E4B1E262EC300AD8B41 /* MessageInfoDAO.swift in Sources */,
+				FEB75E491E262EA100AD8B41 /* MessageInfoImpl.swift in Sources */,
 				FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */,
 				FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */,
 				FEB75E401E250D4F00AD8B41 /* UserInfoDAO.swift in Sources */,
 				FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */,
+				FEB75E4F1E290D7A00AD8B41 /* ConnectInfoImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
