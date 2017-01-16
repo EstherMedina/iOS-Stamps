@@ -158,7 +158,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
     
     @IBAction func forgotPasswordPressed(_ sender: AnyObject) {
         //crear un alert controller con caja de text
-        let alertController = UIAlertController(title: "Recuperar contraseña", message: "Introduce el email de registro en Tinsnappook", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Recuperar contraseña", message: "Introduce el email de registro en Sipe Nope", preferredStyle: .alert)
         alertController.addTextField { (textField) in
             textField.placeholder = "Introduce aquí tu email"
         }
@@ -179,6 +179,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
                     self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(theEmailTextfield.text!) y sigue las instrucciones indicadas")
                 }
             })
+             
         }
         let cancelAction = UIAlertAction(title: "Ahora no", style: .cancel, handler: nil)
         

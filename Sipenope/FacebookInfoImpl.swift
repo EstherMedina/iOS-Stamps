@@ -32,4 +32,8 @@ class FacebookInfoImpl: FacebookInfoDAO {
             annotation: annotation)
     }
     
+    func activateApp() {
+        FBSDKAppEvents.activateApp()
+    }
+    
 }

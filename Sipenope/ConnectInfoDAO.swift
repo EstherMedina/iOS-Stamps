@@ -12,6 +12,7 @@ import UIKit
 
 protocol ConnectInfoDAO {
     var plistData: [String:NSObject] {get set}
+    
     var applicationId: String {get set}
     var clientKey: String {get set}
     var server: String {get set}

@@ -61,6 +61,7 @@
 		FEB75E541E2CE10D00AD8B41 /* AclInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AclInfoImpl.swift; sourceTree = "<group>"; };
 		FEB75E561E2CE46700AD8B41 /* FacebookInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInfoDAO.swift; sourceTree = "<group>"; };
 		FEB75E581E2CE4E600AD8B41 /* FacebookInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInfoImpl.swift; sourceTree = "<group>"; };
+		FEB75E5A1E2D0AF700AD8B41 /* Sipenope.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sipenope.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +115,7 @@
 		FEB75E1B1E24D97100AD8B41 /* Sipenope */ = {
 			isa = PBXGroup;
 			children = (
+				FEB75E5A1E2D0AF700AD8B41 /* Sipenope.entitlements */,
 				FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */,
 				FEB75E331E24F60600AD8B41 /* Model */,
 				FEB75E341E24F62400AD8B41 /* View */,
@@ -243,6 +245,11 @@
 						CreatedOnToolsVersion = 8.2;
 						DevelopmentTeam = 5MKK64EPKX;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

@@ -19,5 +19,6 @@ protocol FacebookInfoDAO {
     
     func isUrlIntendedForFacebookSDK(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
 
+    func activateApp()
 }
 
