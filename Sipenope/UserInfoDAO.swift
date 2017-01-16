@@ -11,9 +11,9 @@ import UIKit
 
 
 protocol UserInfoDAO {
-    var plistData: [String:String] {get set}
+    var plistData: [String:NSObject] {get set}
     
-    init(plistData: [String: String]) 
+    init(plistData: [String: NSObject]) 
 
     func getUsers() -> [User]
     

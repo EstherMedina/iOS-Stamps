@@ -11,7 +11,14 @@ import UIKit
 
 
 protocol ConnectInfoDAO {
+    var plistData: [String:NSObject] {get set}
+    var applicationId: String {get set}
+    var clientKey: String {get set}
+    var server: String {get set}
+    var isLocalDatastoreEnabled: Bool {get set}
+    
+    init(plistData: [String: NSObject])
 
-    func newConnection(applicationId: String, clientKey: String, server: String, isLocalDatastoreEnabled: Bool)
+    func newConnection()
 }
 

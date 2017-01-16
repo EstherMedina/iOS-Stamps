@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>withAccessForCurrentUser</key>
+	<true/>
+	<key>getPublicReadAccess</key>
+	<true/>
+	<key>isLocalDatastoreEnabled</key>
+	<true/>
+	<key>server</key>
+	<string>http://ec2-54-229-104-119.eu-west-1.compute.amazonaws.com:80/parse</string>
+	<key>clientKey</key>
+	<string>13939de200f1cefbbc6bf3acc385ba67689aa5be</string>
+	<key>applicationId</key>
+	<string>f9e39ebf8fa0a4aaf9a8111d4c504b630d8ee3df</string>
 	<key>classnameuser</key>
 	<string>User</string>
 	<key>classnamemessage</key>

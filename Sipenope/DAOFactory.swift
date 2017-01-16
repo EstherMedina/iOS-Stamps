@@ -15,10 +15,12 @@ class DAOFactory: NSObject {
     static  let notificationNameLoadMessages = "MessagesLoaded"
     static let sharedInstance: DAOFactory = DAOFactory()
     var connectInfoDAO: ConnectInfoDAO?
+    var aclInfoDAO: AclInfoDAO?
+    var facebookInfoDAO: FacebookInfoDAO?
     var userInfoDAO: UserInfoDAO?
     var messageInfoDAO: MessageInfoDAO?
     
-    var plistData: [String: String] = [:] //Our data
+    var plistData: [String: NSObject] = [:] //Our data
     
 
     override init() {
@@ -26,14 +28,16 @@ class DAOFactory: NSObject {
         
         readPropertyList(name: "SipeNope", ext: "plist")
         if plistData != [:]{
-            if plistData["datastore"] == "Parse" {
+            if plistData["datastore"] as! String == "Parse" {
                 if (plistData["classnameuser"] != nil) {
                     self.userInfoDAO = UserInfoImpl(plistData: self.plistData)
                 }
                 if (plistData["classnamemessage"] != nil) {
                     self.messageInfoDAO = MessageInfoImpl(plistData: self.plistData)
                 }
-                self.connectInfoDAO = ConnectInfoImpl()
+                self.connectInfoDAO = ConnectInfoImpl(plistData: self.plistData)
+                self.aclInfoDAO = AclInfoImpl(plistData: self.plistData)
+                self.facebookInfoDAO = FacebookInfoImpl(plistData: self.plistData)
             }
         }
     }
@@ -45,7 +49,7 @@ class DAOFactory: NSObject {
         let plistPath: String? = Bundle.main.path(forResource: name, ofType: ext)! //the path of the data
         let plistXML = FileManager.default.contents(atPath: plistPath!)!
         do {//convert the data to a dictionary and handle errors.
-            self.plistData = try PropertyListSerialization.propertyList(from: plistXML, options: .mutableContainersAndLeaves, format: &propertyListForamt) as! [String:String]
+            self.plistData = try PropertyListSerialization.propertyList(from: plistXML, options: .mutableContainersAndLeaves, format: &propertyListForamt) as! [String:NSObject]
             
         } catch {
             print("Error reading plist: \(error), format: \(propertyListForamt)")

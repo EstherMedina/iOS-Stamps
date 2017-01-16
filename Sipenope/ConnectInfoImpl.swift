@@ -14,14 +14,29 @@ import Parse
 
 class ConnectInfoImpl: ConnectInfoDAO {
     
-    func newConnection(applicationId: String, clientKey: String, server: String, isLocalDatastoreEnabled: Bool) {
+    var plistData: [String:NSObject] = [:]
+    var applicationId: String = ""
+    var clientKey: String = ""
+    var server: String = ""
+    var isLocalDatastoreEnabled: Bool = true
+    
+    
+    required init(plistData: [String: NSObject]) {
+        self.plistData = plistData
+        self.applicationId = self.plistData["applicationId"]! as! String
+        self.clientKey = self.plistData["clientKey"]! as! String
+        self.server = self.plistData["server"]! as! String
+        self.isLocalDatastoreEnabled = self.plistData["isLocalDatastoreEnabled"]! as! Bool
+    }
+    
+    func newConnection() {
         Parse.enableLocalDatastore()
         
         let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-            ParseMutableClientConfiguration.applicationId = applicationId
-            ParseMutableClientConfiguration.clientKey = clientKey
-            ParseMutableClientConfiguration.server = server
-            ParseMutableClientConfiguration.isLocalDatastoreEnabled = isLocalDatastoreEnabled
+            ParseMutableClientConfiguration.applicationId = self.applicationId
+            ParseMutableClientConfiguration.clientKey = self.clientKey
+            ParseMutableClientConfiguration.server = self.server
+            ParseMutableClientConfiguration.isLocalDatastoreEnabled = self.isLocalDatastoreEnabled
         })
         Parse.enableLocalDatastore()
         Parse.initialize(with: parseConfiguration)

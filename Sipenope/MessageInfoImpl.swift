@@ -13,17 +13,17 @@ import Parse
 
 class MessageInfoImpl: MessageInfoDAO {
     
-    var plistData: [String:String] = [:]
+    var plistData: [String:NSObject] = [:]
     
     
-    required init(plistData: [String: String]) {
+    required init(plistData: [String: NSObject]) {
         self.plistData = plistData
     }
     
     func setNewMessageInBackground(senderId: String, receiverId: String, message: String) {
         let messageText = message
         if messageText != ""{
-            let object = PFObject(className: self.plistData["classnamemessage"]!)
+            let object = PFObject(className: self.plistData["classnamemessage"]! as! String)
             object["senderId"] = senderId
             object["receiverId"] = receiverId
             object["message"] = message
@@ -36,11 +36,11 @@ class MessageInfoImpl: MessageInfoDAO {
     
     func loadMessages(userId: String, myUserId: String) {
         
-        let querySender = PFQuery(className: self.plistData["classnamemessage"]!)
+        let querySender = PFQuery(className: self.plistData["classnamemessage"]! as! String)
         querySender.whereKey("senderId", equalTo: userId )
         querySender.whereKey("receiverId", equalTo: myUserId )
         
-        let queryReceiver = PFQuery(className: self.plistData["classnamemessage"]!)
+        let queryReceiver = PFQuery(className: self.plistData["classnamemessage"]! as! String)
         queryReceiver.whereKey("senderId", equalTo: myUserId )
         queryReceiver.whereKey("receiverId", equalTo: userId )
         

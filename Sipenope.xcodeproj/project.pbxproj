@@ -26,6 +26,10 @@
 		FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E4C1E265C2400AD8B41 /* LoginVC.swift */; };
 		FEB75E4F1E290D7A00AD8B41 /* ConnectInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E4E1E290D7A00AD8B41 /* ConnectInfoImpl.swift */; };
 		FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E501E290DAC00AD8B41 /* ConnectInfoDAO.swift */; };
+		FEB75E531E2CE07500AD8B41 /* AclInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E521E2CE07500AD8B41 /* AclInfoDAO.swift */; };
+		FEB75E551E2CE10D00AD8B41 /* AclInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E541E2CE10D00AD8B41 /* AclInfoImpl.swift */; };
+		FEB75E571E2CE46700AD8B41 /* FacebookInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E561E2CE46700AD8B41 /* FacebookInfoDAO.swift */; };
+		FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E581E2CE4E600AD8B41 /* FacebookInfoImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +57,10 @@
 		FEB75E4C1E265C2400AD8B41 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		FEB75E4E1E290D7A00AD8B41 /* ConnectInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectInfoImpl.swift; sourceTree = "<group>"; };
 		FEB75E501E290DAC00AD8B41 /* ConnectInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectInfoDAO.swift; sourceTree = "<group>"; };
+		FEB75E521E2CE07500AD8B41 /* AclInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AclInfoDAO.swift; sourceTree = "<group>"; };
+		FEB75E541E2CE10D00AD8B41 /* AclInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AclInfoImpl.swift; sourceTree = "<group>"; };
+		FEB75E561E2CE46700AD8B41 /* FacebookInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInfoDAO.swift; sourceTree = "<group>"; };
+		FEB75E581E2CE4E600AD8B41 /* FacebookInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInfoImpl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,8 @@
 			children = (
 				FEB75E3D1E250BF500AD8B41 /* DAOFactory.swift */,
 				FEB75E501E290DAC00AD8B41 /* ConnectInfoDAO.swift */,
+				FEB75E521E2CE07500AD8B41 /* AclInfoDAO.swift */,
+				FEB75E561E2CE46700AD8B41 /* FacebookInfoDAO.swift */,
 				FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */,
 				FEB75E4A1E262EC300AD8B41 /* MessageInfoDAO.swift */,
 				FEB75E381E24F6B600AD8B41 /* Parse */,
@@ -180,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				FEB75E4E1E290D7A00AD8B41 /* ConnectInfoImpl.swift */,
+				FEB75E541E2CE10D00AD8B41 /* AclInfoImpl.swift */,
+				FEB75E581E2CE4E600AD8B41 /* FacebookInfoImpl.swift */,
 				FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */,
 				FEB75E481E262EA100AD8B41 /* MessageInfoImpl.swift */,
 			);
@@ -320,7 +332,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEB75E3A1E24F8FA00AD8B41 /* User.swift in Sources */,
+				FEB75E571E2CE46700AD8B41 /* FacebookInfoDAO.swift in Sources */,
 				FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */,
+				FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */,
 				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
 				FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */,
 				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
@@ -329,7 +343,9 @@
 				FEB75E4B1E262EC300AD8B41 /* MessageInfoDAO.swift in Sources */,
 				FEB75E491E262EA100AD8B41 /* MessageInfoImpl.swift in Sources */,
 				FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */,
+				FEB75E551E2CE10D00AD8B41 /* AclInfoImpl.swift in Sources */,
 				FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */,
+				FEB75E531E2CE07500AD8B41 /* AclInfoDAO.swift in Sources */,
 				FEB75E401E250D4F00AD8B41 /* UserInfoDAO.swift in Sources */,
 				FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */,
 				FEB75E4F1E290D7A00AD8B41 /* ConnectInfoImpl.swift in Sources */,

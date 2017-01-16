@@ -13,9 +13,9 @@ import Parse
 
 class UserInfoImpl: UserInfoDAO {
     
-    var plistData: [String:String] = [:]
+    var plistData: [String:NSObject] = [:]
     
-    required init(plistData: [String: String]) {
+    required init(plistData: [String: NSObject]) {
         self.plistData = plistData
     }
    

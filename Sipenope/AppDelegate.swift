@@ -7,18 +7,17 @@
 //
 
 import UIKit
-import Parse
-import Bolts
-import FBSDKShareKit
-import FBSDKCoreKit
-import FBSDKLoginKit
-import ParseFacebookUtilsV4
+
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var aclInfoDAO : AclInfoDAO?
+    var connectInfoDAO: ConnectInfoDAO?
+    var facebookInfoDAO: FacebookInfoDAO?
 
 
     //--------------------------------------
@@ -27,93 +26,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    //func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Enable storing and querying data from Local Datastore.
-        // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
+        self.connectInfoDAO = DAOFactory.sharedInstance.connectInfoDAO
+        connectInfoDAO?.newConnection()
         
-        let connectInfoDAO = DAOFactory.sharedInstance.connectInfoDAO
-        connectInfoDAO?.newConnection(applicationId: "f9e39ebf8fa0a4aaf9a8111d4c504b630d8ee3df", clientKey: "13939de200f1cefbbc6bf3acc385ba67689aa5be", server: "http://ec2-54-229-104-119.eu-west-1.compute.amazonaws.com:80/parse", isLocalDatastoreEnabled: true)
-        
-        /*Parse.enableLocalDatastore()
-        
-        let parseConfiguration = ParseClientConfiguration(block: { (ParseMutableClientConfiguration) -> Void in
-            ParseMutableClientConfiguration.applicationId = "f9e39ebf8fa0a4aaf9a8111d4c504b630d8ee3df"
-            ParseMutableClientConfiguration.clientKey = "13939de200f1cefbbc6bf3acc385ba67689aa5be"
-            ParseMutableClientConfiguration.server = "http://ec2-54-229-104-119.eu-west-1.compute.amazonaws.com:80/parse"
-            ParseMutableClientConfiguration.isLocalDatastoreEnabled = true
-        })
-        Parse.enableLocalDatastore()
-        Parse.initialize(with: parseConfiguration)
-        */
-        
-        
-        // ****************************************************************************
-        // Uncomment and fill in with your Parse credentials:
-        // Parse.setApplicationId("your_application_id", clientKey: "your_client_key")
-        //
-        // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
-        // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-        // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
-        // PFFacebookUtils.initializeFacebook()
-        // ****************************************************************************
-        
-        //PFUser.enableAutomaticUser()
-        
-        let defaultACL = PFACL();
-        
-        // If you would like all objects to be private by default, remove this line.
-        defaultACL.getPublicReadAccess = true
-        
-        PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
-        
-        /*if application.applicationState != UIApplicationState.background {
-         // Track an app open here if we launch with a push, unless
-         // "content_available" was used to trigger a background push (introduced in iOS 7).
-         // In that case, we skip tracking here to avoid double counting the app-open.
-         
-         let preBackgroundPush = !application.responds(to: #selector(getter: UIApplication.backgroundRefreshStatus))
-         let oldPushHandlerOnly = !self.responds(to: #selector(UIApplicationDelegate.application(_:didReceiveRemoteNotification:fetchCompletionHandler:)))
-         var noPushPayload = false;
-         if let options = launchOptions {
-         noPushPayload = options[UIApplicationLaunchOptionsRemoteNotificationKey] != nil;
-         }
-         if (preBackgroundPush || oldPushHandlerOnly || noPushPayload) {
-         PFAnalytics.trackAppOpened(launchOptions: launchOptions)
-         }
-         }
-         */
-        
-        //
-        //  Swift 1.2
-        //
-        //        if application.respondsToSelector("registerUserNotificationSettings:") {
-        //            let userNotificationTypes = UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound
-        //            let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //            application.registerForRemoteNotifications()
-        //        } else {
-        //            let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
-        //            application.registerForRemoteNotificationTypes(types)
-        //        }
-        
-        //
-        //  Swift 2.0
-        //l
-        //        if #available(iOS 8.0, *) {
-        //l            let types: UIUserNotificationType = [.Alert, .Badge, .Sound]
-        //            let settings = UIUserNotificationSettings(forTypes: types, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //            application.registerForRemoteNotifications()
-        //        } else {
-        //            let types: UIRemoteNotificationType = [.Alert, .Badge, .Sound]
-        //            application.registerForRemoteNotificationTypes(types)
-        //        }
-        
-        
-        PFFacebookUtils.initializeFacebook(applicationLaunchOptions: launchOptions)
+        self.aclInfoDAO = DAOFactory.sharedInstance.aclInfoDAO
+        aclInfoDAO?.setPublicReadAccess()
+       
+        self.facebookInfoDAO = DAOFactory.sharedInstance.facebookInfoDAO
+        self.facebookInfoDAO?.initializeFacebook(applicationLaunchOptions: launchOptions)
 
         return true
-        //return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
 
@@ -130,26 +52,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //--------------------------------------
     // MARK: Facebook SDK Integration
     //--------------------------------------
-    
-    
-    /*func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-     return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication, session:PFFacebookUtils.session())
-     }*/
-    
+
     func application(application: UIApplication,
                      openURL url: NSURL,
                      sourceApplication: String?,
                      annotation: AnyObject?) -> Bool {
         
-        return FBSDKApplicationDelegate.sharedInstance().application(
-            application,
-            open: url as URL!,
-            sourceApplication: sourceApplication,
-            annotation: annotation)
-        
+        return (self.facebookInfoDAO?.isUrlIntendedForFacebookSDK(application: application, openURL: url, sourceApplication: sourceApplication, annotation: annotation))!
     }
- 
-
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
