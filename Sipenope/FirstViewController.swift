@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FirstViewController: UIViewController {
 
@@ -22,6 +23,9 @@ class FirstViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func logOut(_ sender: Any) {
+        PFUser.logOutInBackground()
+    }
 
 }
 

@@ -21,5 +21,19 @@ protocol UserInfoDAO {
     
     func getObjectidFromCurrentUser() -> String
     
+    func isCurrentUserNil() -> Bool
+    
+    func logOutInBackground()
+    
+    func isUserNew(user: Any?) -> Bool
+    
+    func savePFUserFromFBDict(dict: [String : AnyObject])
+    
+    func createNewUser(username:String, email: String, password: String, alert: Alert)
+    
+    func logInWithUsername(username: String, password: String, alert:Alert)
+    
+    func requestPasswordResetForEmail(email: String, alert: Alert)
+    
 }
 

@@ -12,7 +12,16 @@ import UIKit
 
 class DAOFactory: NSObject {
 
-    static  let notificationNameLoadMessages = "MessagesLoaded"
+    static let notificationNameLoadMessages = "MessagesLoaded"
+    static let notificationNameLogInBackground = "LogInEnded"
+    static let notificationNameCallFBSDKGraphRequest = "FBSDKGraphRequestCalled"
+    static let notificationNameCreateNewUser = "NewUserCreated"
+    static let notificationNameLogInWithUsername = "LogInWithUsernameEnded"
+    static let notificationNameRequestPasswordResetForEmail = "RequestPasswordResetForEmailEnded"
+    
+    
+    
+    
     static let sharedInstance: DAOFactory = DAOFactory()
     var connectInfoDAO: ConnectInfoDAO?
     var aclInfoDAO: AclInfoDAO?

@@ -20,5 +20,15 @@ protocol FacebookInfoDAO {
     func isUrlIntendedForFacebookSDK(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
 
     func activateApp()
+    
+    func wasIntendedForFacebookSDK(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool
+    
+    func wasIntendedForFacebookSDK(app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool
+    
+    func isCurrentAccessTokenNil() -> Bool
+    
+    func logInInBackground(withReadPermissions: [String])
+    
+    func callFBSDKGraphRequest()
 }
 

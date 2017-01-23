@@ -35,6 +35,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1e3-wh-9Yk">
+                                <rect key="frame" x="158" y="141" width="86" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SALIR"/>
+                                <connections>
+                                    <action selector="logOut:" destination="9pv-A4-QxB" eventType="touchUpInside" id="ALi-Nd-57F"/>
+                                    <segue destination="Ekr-RG-pVa" kind="unwind" unwindAction="closeEstherWithSegue:" id="cLH-EG-YoH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -47,8 +56,9 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
+                <exit id="Ekr-RG-pVa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
         <!--ChatVC-->
         <scene sceneID="TeS-D6-CKK">
@@ -193,9 +203,6 @@
                                         <include reference="e3f-pa-5dq"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <outlet property="delegate" destination="kJV-Np-XdZ" id="NOa-QD-Wc6"/>
-                                </connections>
                             </textField>
                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYh-OB-kHl">
                                 <rect key="frame" x="16" y="246" width="343" height="30"/>
@@ -205,9 +212,6 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="kJV-Np-XdZ" id="zaK-Dt-aHi"/>
-                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sYY-O9-UO0">
                                 <rect key="frame" x="16" y="280" width="343" height="40"/>
@@ -218,24 +222,24 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="uCR-lQ-Bx7"/>
+                                    <action selector="loginPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="GaK-Op-m6e"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1k-Rt-B41">
                                 <rect key="frame" x="16" y="444" width="175" height="30"/>
                                 <state key="normal" title="Forgot password?"/>
                                 <connections>
-                                    <action selector="forgotPasswordPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="1Mt-nV-i6M"/>
+                                    <action selector="forgotPasswordPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="fsK-FO-9zw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wm4-UQ-Qke">
                                 <rect key="frame" x="171" y="444" width="160" height="30"/>
                                 <state key="normal" title="|        Sign up"/>
                                 <connections>
-                                    <action selector="signUpPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="9C1-yu-wvu"/>
+                                    <action selector="signUpPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="g2K-xT-lm9"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVz-4x-Cwy" customClass="FBSDKLoginButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVz-4x-Cwy">
                                 <rect key="frame" x="16" y="324" width="343" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -253,7 +257,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="facebookPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="uhb-d4-GUv"/>
+                                    <action selector="facebookPressed:" destination="kJV-Np-XdZ" eventType="touchUpInside" id="NgF-x9-8rJ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -323,10 +327,9 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="facebookButton" destination="TVz-4x-Cwy" id="o2L-Cs-QVI"/>
-                        <outlet property="password" destination="YYh-OB-kHl" id="fyr-2G-Dix"/>
-                        <outlet property="username" destination="iSq-V1-yeL" id="M5J-1W-vaa"/>
-                        <segue destination="gCU-ws-6y6" kind="show" identifier="goToMainVC" id="iZZ-Ks-QJP"/>
+                        <outlet property="password" destination="YYh-OB-kHl" id="euU-E4-Huk"/>
+                        <outlet property="username" destination="iSq-V1-yeL" id="NjX-zY-yTp"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="goToMainVC" id="i8D-FF-cxV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1uS-ko-FtM" sceneMemberID="firstResponder"/>

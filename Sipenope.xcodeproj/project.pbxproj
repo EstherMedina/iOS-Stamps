@@ -30,6 +30,7 @@
 		FEB75E551E2CE10D00AD8B41 /* AclInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E541E2CE10D00AD8B41 /* AclInfoImpl.swift */; };
 		FEB75E571E2CE46700AD8B41 /* FacebookInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E561E2CE46700AD8B41 /* FacebookInfoDAO.swift */; };
 		FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E581E2CE4E600AD8B41 /* FacebookInfoImpl.swift */; };
+		FEF5343E1E35F3C500E5EED5 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF5343D1E35F3C500E5EED5 /* Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		FEB75E561E2CE46700AD8B41 /* FacebookInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInfoDAO.swift; sourceTree = "<group>"; };
 		FEB75E581E2CE4E600AD8B41 /* FacebookInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInfoImpl.swift; sourceTree = "<group>"; };
 		FEB75E5A1E2D0AF700AD8B41 /* Sipenope.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Sipenope.entitlements; sourceTree = "<group>"; };
+		FEF5343D1E35F3C500E5EED5 /* Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			children = (
 				FEB75E391E24F8FA00AD8B41 /* User.swift */,
 				FEB75E3B1E24F92F00AD8B41 /* Message.swift */,
+				FEF5343D1E35F3C500E5EED5 /* Alert.swift */,
 				FEB75E371E24F6A600AD8B41 /* Daos */,
 			);
 			name = Model;
@@ -247,7 +250,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -343,6 +346,7 @@
 				FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */,
 				FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */,
 				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
+				FEF5343E1E35F3C500E5EED5 /* Alert.swift in Sources */,
 				FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */,
 				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
 				FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */,
@@ -479,12 +483,14 @@
 			baseConfigurationReference = 6A084A92806A68508BAC0DF4 /* Pods-Sipenope.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sipenope/Sipenope.entitlements;
 				DEVELOPMENT_TEAM = 5MKK64EPKX;
 				INFOPLIST_FILE = Sipenope/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.home.Sipenope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -493,12 +499,14 @@
 			baseConfigurationReference = BE007AD0C8D86428E74F93F7 /* Pods-Sipenope.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Sipenope/Sipenope.entitlements;
 				DEVELOPMENT_TEAM = 5MKK64EPKX;
 				INFOPLIST_FILE = Sipenope/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.home.Sipenope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

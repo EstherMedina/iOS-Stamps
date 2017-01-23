@@ -16,88 +16,76 @@
  */
 
 import UIKit
-import Parse
-import FBSDKCoreKit
-import FBSDKLoginKit
-import FBSDKShareKit
-import ParseFacebookUtilsV4
 
-class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
+
+class LoginVC: UIViewController  {
     
-    //MARK: FACEBOOK
-    
-    
+    var dict : [String : AnyObject]!
     var activityIndicator : UIActivityIndicatorView!
+    let userInfoDAO = DAOFactory.sharedInstance.userInfoDAO
+    let facebookInfoDAO  = DAOFactory.sharedInstance.facebookInfoDAO
     
-    // Facebook Delegate Methods
-    /*!
-     @abstract Sent to the delegate when the button was used to login.
-     @param loginButton the sender
-     @param result The results of the login
-     @param error The error (if any) from the login
-     */
-    public func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        print("User Logged In")
-        if ((error) != nil)
-        {
-            // Process error
-            print("Hay error en log de Facebook: \(error.localizedDescription)")
-            return
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-            print("Cancelled")
-        }
-        else {
-            // If you ask for multiple permissions at once, you
-            // should check if specific permissions missing
-            if result.grantedPermissions.contains("email")
-            {
-                // Do work
-            }
-        }
-        print("Do work")
-        
-    }
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
-    
-    func returnUserData()
-    {
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                print("fetched user: \(result)")
-                //let userName : NSString = result.valueForKey("name") as! NSString
-                //print("User Name is: \(userName)")
-                //let userEmail : NSString = result.valueForKey("email") as! NSString
-                //print("User Email is: \(userEmail)")
-            }
-        })
-    }
-    
-    
-    
-    
-    
-    //MARK: ACTIONS&OUTLETS
-    
-    @IBOutlet weak var facebookButton: FBSDKLoginButton!
     
     @IBOutlet weak var username: UITextField!
-    
     @IBOutlet weak var password: UITextField!
     
+    
+    //MARK: DEFAULT
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if userInfoDAO?.isCurrentUserNil() == false || facebookInfoDAO?.isCurrentAccessTokenNil() == false  {
+            self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+        }
+       
+        
+        //cuando se hace un  logout, se queda la barra de navegación, por lo q ocultarla
+        self.navigationController?.navigationBar.isHidden = true
+        
+    }
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if (facebookInfoDAO?.isCurrentAccessTokenNil() == false)
+        {
+            // User is already logged in, do work such as go to next view controller.
+            print("Hemos entrado correctamente con facebook")
+            self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+        }
+     }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    //MARK: exit
+    @IBAction func closeEsther(segue: UIStoryboardSegue){
+        if segue.source is FirstViewController {
+            print("Vengo de FirstVC!!")
+            userInfoDAO?.logOutInBackground()
+        }
+    }
+    
+    
+    
+    
+    
+    //MARK: LOGIN
     @IBAction func loginPressed(_ sender: AnyObject) {
         if self.infoCompleted()  {
             self.beginActivityIndicator()
+            let alert = Alert(errorMessage: "Error de Login. inténtelo de nuevo", okMessage: "Hemos entrado correctamente", alertTittle: "Error de login", segue: "goToMainVC")
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil)
+            userInfoDAO?.logInWithUsername(username: self.username.text!, password: self.password.text!, alert: alert)
+    
+            
+            /*
             PFUser.logInWithUsername(inBackground: self.username.text!, password: self.password.text!, block: { (user, error) in
                 self.endActivityIndicator()
                 if error != nil {
@@ -112,6 +100,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
                     self.performSegue(withIdentifier: "goToMainVC", sender: self)
                 }
             })
+             */
             
             
             
@@ -120,41 +109,129 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
         }
     }
     
-    @IBAction func facebookPressed(_ sender: AnyObject) {
-        
-        
-        let permissions = ["public_profile", "email", "user_friends"]
-        PFFacebookUtils.logInInBackground(withReadPermissions: permissions) { (user, error) in
-            if let user = user {
-                if user.isNew {
-                    print("User signed up and logged in through Facebook!")
-                } else {
-                    print("User logged in through Facebook!")
-                }
-            } else {
-                print("Uh oh. The user cancelled the Facebook login.")
-            }
+
+    //MARK: FACEBOOK
+    func AuxiliaryGetFBUserData(notification: NSNotification) {
+        if let notificationData = notification.userInfo as? [String : Any] {
+            let dict = notificationData["dict"] as! [String : AnyObject]
+            
+            userInfoDAO?.savePFUserFromFBDict(dict: dict)
         }
+    }
+    
+    
+    func getFBUserData()
+    {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryGetFBUserData), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil)
+        facebookInfoDAO?.callFBSDKGraphRequest()
         
         /*
-         if FBSDKAccessToken.current() != nil {
-         FBSDKLoginManager().logOut()
-         return
-         }
+         FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
+         if (error == nil){
+         self.dict = result as! [String : AnyObject]
+         print(result!)
+         print(self.dict)
          
-         let login: FBSDKLoginManager = FBSDKLoginManager()
-         login.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
-         if error != nil {
-         FBSDKLoginManager().logOut()
-         } else if (result?.isCancelled)! {
-         FBSDKLoginManager().logOut()
-         } else {
-         print("exito!!!")
+         
+         PFUser.current()!.email = self.dict["email"] as? String
+         PFUser.current()!["username"] = PFUser.current()!.email
+         PFUser.current()!["gender"] = true
+         PFUser.current()!["radius"] = 100
+         PFUser.current()!["nickname"] = (self.dict["email"] as? String)?.components(separatedBy: "@")[0]
+         //PFUser.current()!["image"]
+         let pictureURL = ((self.dict["picture"] as! NSDictionary)["data"] as! NSDictionary)["url"] as! String
+         let URLRequest = NSURL(string: pictureURL)
+         let URLRequestNeeded = NSURLRequest(url: URLRequest! as URL)
+         NSURLConnection.sendAsynchronousRequest(URLRequestNeeded as URLRequest, queue: OperationQueue.main, completionHandler: { (response, data, error) in
+         
+         if error == nil {
+         let imageData = UIImageJPEGRepresentation(UIImage(data:data!)!, 0.8)
+         let imageFile = PFFile(name: "image.jpg", data: imageData!)
+         
+         PFUser.current()!["image"] = imageFile
+         
          }
-         }*/
-        
-        
+         PFUser.current()!.saveInBackground()
+         })
+         }
+         })
+         */
     }
+
+    func AuxiliaryLoginFacebook(notification: NSNotification) {
+        if let notificationData = notification.userInfo as? [String : Any] {
+            let error = notificationData["error"] as? Error
+            let user = notificationData["user"] as Any
+            
+            if error == nil {
+                if  (userInfoDAO?.isUserNew(user: user))! {
+                    print("User signed up and logged in with Facebook! \(user)")
+                    self.getFBUserData()
+                    
+                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                } else {
+                    print("User logged in via Facebook \(user)")
+                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                }
+            }
+        }
+        self.endActivityIndicator()
+    }
+    
+    @IBAction func facebookPressed(_ sender: AnyObject) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryLoginFacebook), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil)
+        self.beginActivityIndicator()
+        facebookInfoDAO?.logInInBackground(withReadPermissions: [])
+        
+        
+        /*
+        PFFacebookUtils.logInInBackground(withReadPermissions: []) { (user, error) in
+            if error != nil {
+                //process error
+                print(error.debugDescription)
+                return
+            }
+            else
+            {
+                
+                if user!.isNew {
+                    print("User signed up and logged in with Facebook! \(user)")
+                    self.getFBUserData()
+                    
+                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                } else {
+                    print("User logged in via Facebook \(user)")
+                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                }
+                
+            }
+        }
+         */
+    }
+    
+    
+    
+    
+    
+    
+    //MARK: forgotPasswordPressed
+    func AuxiliaryForgotPasswordPressed(notification: NSNotification) {
+        if let notificationData = notification.userInfo as? [String : Any] {
+            let error = notificationData["error"] as? Error
+            let email = notificationData["email"] as! String
+            
+            
+            self.AuxiliaryAlertOrSegue(notification: notification)
+            
+            if error == nil {
+                //crear otra alerta
+                self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(email) y sigue las instrucciones indicadas")
+            }
+        }
+    }
+    
     
     @IBAction func forgotPasswordPressed(_ sender: AnyObject) {
         //crear un alert controller con caja de text
@@ -164,9 +241,13 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
         }
         let okAction = UIAlertAction(title: "Recuperar contraseña", style: .default) { (action) in
             let theEmailTextfield = alertController.textFields![0] as UITextField
+            let alert = Alert(errorMessage: "Error al crear al recuperar la contraseña. inténtelo de nuevo", okMessage: "Contraseña recuperada", alertTittle: "Error de contraseña", segue: "")
             
+            self.beginActivityIndicator()
+            NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryForgotPasswordPressed), name: NSNotification.Name(rawValue: DAOFactory.notificationNameRequestPasswordResetForEmail), object: nil)
+            self.userInfoDAO?.requestPasswordResetForEmail(email: theEmailTextfield.text!, alert: alert)
             
-            PFUser.requestPasswordResetForEmail(inBackground: theEmailTextfield.text!, block: { (success, error) in
+            /*PFUser.requestPasswordResetForEmail(inBackground: theEmailTextfield.text!, block: { (success, error) in
                 if error != nil {
                     var errorMessage = "Error al crear al recuperar la contraseña. inténtelo de nuevo"
                     print(error.debugDescription)
@@ -179,6 +260,7 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
                     self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(theEmailTextfield.text!) y sigue las instrucciones indicadas")
                 }
             })
+             */
              
         }
         let cancelAction = UIAlertAction(title: "Ahora no", style: .cancel, handler: nil)
@@ -188,195 +270,24 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    //MARK:signUp
     @IBAction func signUpPressed(_ sender: AnyObject) {
         if self.infoCompleted()  {
-            self.beginActivityIndicator()
-            // en appdelegate comento: //PFUser.enableAutomaticUser()
-            self.createNewUserUser()
-            self.endActivityIndicator()
+            self.createNewUser()
         }
         
     }
+
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if PFUser.current() != nil {
-            self.performSegue(withIdentifier: "goToMainVC", sender: nil)
-        }
-        
-        //cuando se hace un  logout, se queda la barra de navegación, por lo q ocultarla
-        self.navigationController?.navigationBar.isHidden = true
-        
-    }
-    
-    
-    
-    
-    //MARK: DEFAULT
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        //Descomenta esta linea para probar que Parse funciona correctamente
-        //self.testParseSave()
-        
-        //self.createUsers()
-        //self.getObjetc(nameClass: "Users", id: "e0oOnJ87y7")
-        
-        
-        
-        
-        if (FBSDKAccessToken.current() != nil)
-        {
-            // User is already logged in, do work such as go to next view controller.
-            print("Hemos entrado correctamente con facebook")
-            self.performSegue(withIdentifier: "goToMainVC", sender: nil)
-        }
-        else
-        {
-            
-            facebookButton.delegate = self
-            facebookButton.readPermissions = ["public_profile", "email", "user_friends"]
-            
-            /* let loginView : FBSDKLoginButton = FBSDKLoginButton()
-             self.view.addSubview(loginView)
-             loginView.center = self.view.center
-             loginView.readPermissions = ["public_profile", "email", "user_friends"]
-             loginView.delegate = self
-             
-             //self.password.isHidden = true
-             print("******************************")
-             print(self.password.center)
-             print(self.view.center)*/
-            
-            
-            
-        }
+    //MARK: createNewUser
+    func createNewUser() {
+        let alert = Alert(errorMessage: "Error al crear el nuevo cliente. inténtelo de nuevo", okMessage: "Usuario registrado correctamente", alertTittle: "Error de registro", segue: "goToMainVC")
+        self.beginActivityIndicator()
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
+        self.userInfoDAO?.createNewUser(username: self.username.text!, email: self.username.text!, password: self.password.text!, alert: alert)
         
         /*
-         let gameScore = PFObject(className:"score")
-         gameScore["level"] = 1337
-         gameScore.pinInBackground(withName: "score")
-         //gameScore.unpinInBackground(withName: "score")
-         //PFObject.unpinAllObjectsInBackground(withName: "score")
-         gameScore.saveInBackground()
-         */
-        
-        
-        
-        /*let query2 = PFQuery(className:"GameScore")
-         query2.fromPin(withName: "MyChanges")
-         query2.findObjectsInBackground().continue({
-         (task: BFTask!) -> AnyObject! in
-         let scores = task.result! as NSArray
-         for score in scores {
-         (score as AnyObject).saveInBackground().continue(successBlock: {
-         (task: BFTask!) -> AnyObject! in
-         return (score as AnyObject).unpinInBackground()
-         })
-         }
-         return task
-         })*/
-        
-        
-        
-        
-        /*
-         var query = PFQuery(className:"score")
-         query.fromLocalDatastore()
-         query.whereKey("level", equalTo: 1337)
-         query.findObjectsInBackground {
-         (objects: [PFObject]?, error: Error?) -> Void in
-         
-         if error == nil {
-         // The find succeeded.
-         print("Successfully retrieved \(objects!.count) scores.")
-         // Do something with the found objects
-         if let objects = objects {
-         for object in objects {
-         print(object["level"] as! Int)
-         //object.unpinInBackground()
-         }
-         }
-         } else {
-         // Log details of the failure
-         print("Error: \(error!) \((error! as! NSError).userInfo)")
-         }
-         }*/
-        
-        
-        
-        
-        
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    
-    
-    //MARK: PARSE
-    func getObjetc(nameClass: String, id: String) {
-        let query = PFQuery(className: nameClass)
-        query.getObjectInBackground(withId: id) { (object, error) in
-            if error != nil {
-                print (error?.localizedDescription)
-            } else {
-                if let user = object {
-                    print(user)
-                    //cambio algún valor
-                    user["name"] = "Esther"
-                    user.saveInBackground(block: { (success, error) in
-                        if success {
-                            print("El objeto se ha modificado.")
-                        } else {
-                            print ("Error")
-                        }
-                    })
-                }
-            }
-            
-        }
-    }
-    
-    func testParseSave() {
-        let testObject = PFObject(className: "MyTestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackground { (success, error) -> Void in
-            if success {
-                print("El objeto se ha guardado en Parse correctamente.")
-            } else {
-                if error != nil {
-                    print (error)
-                } else {
-                    print ("Error")
-                }
-            }
-        }
-    }
-    
-    func createUsers() {
-        let testObject = PFObject(className: "Users")
-        testObject["name"] = "Juan"
-        testObject.saveInBackground { (success, error) -> Void in
-            if success {
-                print("El usuario se ha guardado en Parse correctamente.")
-            } else {
-                if error != nil {
-                    print (error)
-                } else {
-                    print ("Error")
-                }
-            }
-        }
-    }
-    
-    func createNewUserUser() {
         let user = PFUser()
         user.username = self.username.text
         user.email = self.username.text
@@ -396,10 +307,37 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
                 self.performSegue(withIdentifier: "goToMainVC", sender: self)
             }
         }
+         */
     }
     
+
     
     //MARK: GENERAL
+    func AuxiliaryAlertOrSegue(notification: NSNotification) {
+        if let notificationData = notification.userInfo as? [String : Any] {
+            let error = notificationData["error"] as? Error
+            let alert = notificationData["alert"] as! Alert
+            
+            if error != nil {
+                var errorMessage = alert.errorMessage
+                print(error?.localizedDescription ?? "Error")
+                if let parseError = (error as! NSError).userInfo["error"] as? String {
+                    errorMessage = parseError
+                }
+                self.presentAlert(title: alert.alertTittle, message: errorMessage!)
+            } else {
+                print(alert.okMessage)
+                
+                //Transiciono a la siguietne pantalla
+                if alert.segue != "" {
+                    self.performSegue(withIdentifier: alert.segue, sender: self)
+                }
+            }
+        }
+        self.endActivityIndicator()
+    }
+    
+
     func beginActivityIndicator() {
         self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: self.view.center.x, y: self.view.center.y, width: 50, height: 50))
         self.activityIndicator.center = self.view.center
@@ -438,13 +376,9 @@ class LoginVC: UIViewController , FBSDKLoginButtonDelegate {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    
-    
-    
-    
-    
+
 }
+
 
 extension LoginVC: UITextFieldDelegate {
     //cuando se pulse enter en los textfields va a ocultar el teclado
