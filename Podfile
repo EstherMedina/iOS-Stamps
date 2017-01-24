@@ -19,5 +19,8 @@ target 'Sipenope' do
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
   pod 'ParseFacebookUtilsV4'
+  
+  # Pods for SWRevealViewController
+  pod 'SWRevealViewController'
 
 end

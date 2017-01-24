@@ -14,4 +14,5 @@
 #import <FBSDKShareKit/FBSDKShareKit.h>
 #import <ParseFacebookUtilsV4/ParseFacebookUtilsV4.h>
 #import <ParseFacebookUtilsV4/PFFacebookUtils.h>
+#import <SWRevealViewController/SWRevealViewController.h>
 

@@ -20,6 +20,8 @@ class MessageInfoImpl: MessageInfoDAO {
         self.plistData = plistData
     }
     
+    
+    //MARK: GET  INFO
     func setNewMessageInBackground(senderId: String, receiverId: String, message: String) {
         let messageText = message
         if messageText != ""{
@@ -31,8 +33,7 @@ class MessageInfoImpl: MessageInfoDAO {
         }
         
     }
-    
-    
+
     
     func loadMessages(userId: String, myUserId: String) {
         

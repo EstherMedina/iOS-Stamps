@@ -25,6 +25,7 @@ PODS:
   - ParseUI (1.2.0):
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
+  - SWRevealViewController (2.3.0)
 
 DEPENDENCIES:
   - FBSDKCoreKit
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - Parse
   - ParseFacebookUtilsV4
   - ParseUI
+  - SWRevealViewController
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -45,7 +47,8 @@ SPEC CHECKSUMS:
   Parse: 4335d65f40cb3d43190d723144bbe1afb9c38230
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
 
-PODFILE CHECKSUM: f9cbf9d311ea8597a9e29c7d2465f4b4923ea29e
+PODFILE CHECKSUM: bf6ee92af33b3b60b0bfecb9e376417d1e2c077a
 
 COCOAPODS: 1.2.0.beta.3

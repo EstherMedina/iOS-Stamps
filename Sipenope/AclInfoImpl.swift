@@ -24,6 +24,8 @@ class AclInfoImpl: AclInfoDAO {
         self.withAccessForCurrentUser = self.plistData["withAccessForCurrentUser"]! as! Bool
     }
     
+    
+    //MARK: GET  INFO
     func setPublicReadAccess() {
         let defaultACL = PFACL();
         // If you would like all objects to be private by default, remove this line.

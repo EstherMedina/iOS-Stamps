@@ -13,7 +13,9 @@ import UIKit
 protocol UserInfoDAO {
     var plistData: [String:NSObject] {get set}
     
-    init(plistData: [String: NSObject]) 
+    init(plistData: [String: NSObject])
+    
+    func getCurrentUser() 
 
     func getUsers() -> [User]
     
@@ -25,9 +27,11 @@ protocol UserInfoDAO {
     
     func logOutInBackground()
     
+    func logOutInBackgroundBlock()
+    
     func isUserNew(user: Any?) -> Bool
     
-    func savePFUserFromFBDict(dict: [String : AnyObject])
+    func saveCurrentUserFromFBDict(dict: [String : AnyObject])
     
     func createNewUser(username:String, email: String, password: String, alert: Alert)
     

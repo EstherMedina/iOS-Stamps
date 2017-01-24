@@ -23,38 +23,15 @@ class FacebookInfoImpl: FacebookInfoDAO {
         self.plistData = plistData
     }
     
+    
+    //MARK: INITIALIZE,  ACTIVATE, LOGIN
     func initializeFacebook(applicationLaunchOptions: [AnyHashable : Any]? = nil) {
         PFFacebookUtils.initializeFacebook(applicationLaunchOptions: applicationLaunchOptions)
-    }
-    
-    func isUrlIntendedForFacebookSDK(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(
-            application,
-            open: url as URL!,
-            sourceApplication: sourceApplication,
-            annotation: annotation)
     }
     
     func activateApp() {
         FBSDKAppEvents.activateApp()
     }
-    
-    func wasIntendedForFacebookSDK(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-    }
-    
-    func wasIntendedForFacebookSDK(app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
-    }
-    
-    func isCurrentAccessTokenNil() -> Bool {
-        var isCurrentAccessTokenNil = true
-        
-        isCurrentAccessTokenNil = (FBSDKAccessToken.current() == nil) ? true : false
-        
-        return isCurrentAccessTokenNil
-    }
-    
     
     func logInInBackground(withReadPermissions: [String]) {
         PFFacebookUtils.logInInBackground(withReadPermissions: withReadPermissions) { (user, error) in
@@ -70,7 +47,34 @@ class FacebookInfoImpl: FacebookInfoDAO {
                 NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil, userInfo: ["user" : user as Any, "error" : error as Any])
             }
         }
+        
+    }
+    
+    
+    //MARK: GET  INFO
+    func isUrlIntendedForFacebookSDK(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(
+            application,
+            open: url as URL!,
+            sourceApplication: sourceApplication,
+            annotation: annotation)
+    }
+    
 
+    func wasIntendedForFacebookSDK(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    func wasIntendedForFacebookSDK(app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+    }
+    
+    func isCurrentAccessTokenNil() -> Bool {
+        var isCurrentAccessTokenNil = true
+        
+        isCurrentAccessTokenNil = (FBSDKAccessToken.current() == nil) ? true : false
+        
+        return isCurrentAccessTokenNil
     }
     
     

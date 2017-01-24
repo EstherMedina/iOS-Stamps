@@ -18,6 +18,7 @@ class User: NSObject {
     var isFriend : Bool = false
     var location : CLLocationCoordinate2D?
     var radius : Double = 100.0
+    var gender : Bool?
 
     
     init(objectId : String, name: String, nickname: String, email: String) {
@@ -37,7 +38,7 @@ class User: NSObject {
         self.image = image
     }
     
-    func setLocationArea(location: CLLocationCoordinate2D, radius: Double) {
+    func setLocationArea(location: CLLocationCoordinate2D?, radius: Double) {
         self.location = location
         self.radius = radius
     }

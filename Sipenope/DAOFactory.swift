@@ -18,6 +18,10 @@ class DAOFactory: NSObject {
     static let notificationNameCreateNewUser = "NewUserCreated"
     static let notificationNameLogInWithUsername = "LogInWithUsernameEnded"
     static let notificationNameRequestPasswordResetForEmail = "RequestPasswordResetForEmailEnded"
+    static let notificationNameGetCurrentUser = "GetCurrentUserEnded"
+    static let notificationNamelogOutInBackgroundBlock = "LogOutInBackgroundBlockEnded"
+    
+    
     
     
     

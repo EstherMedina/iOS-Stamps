@@ -29,6 +29,8 @@ class ConnectInfoImpl: ConnectInfoDAO {
         self.isLocalDatastoreEnabled = self.plistData["isLocalDatastoreEnabled"]! as! Bool
     }
     
+    
+    //MARK: NEW CONNECTION
     func newConnection() {
         Parse.enableLocalDatastore()
         

@@ -78,7 +78,8 @@ class LoginVC: UIViewController  {
     //MARK: LOGIN
     @IBAction func loginPressed(_ sender: AnyObject) {
         if self.infoCompleted()  {
-            self.beginActivityIndicator()
+            //self.beginActivityIndicator()
+            self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
             let alert = Alert(errorMessage: "Error de Login. inténtelo de nuevo", okMessage: "Hemos entrado correctamente", alertTittle: "Error de login", segue: "goToMainVC")
             
             NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil)
@@ -115,7 +116,7 @@ class LoginVC: UIViewController  {
         if let notificationData = notification.userInfo as? [String : Any] {
             let dict = notificationData["dict"] as! [String : AnyObject]
             
-            userInfoDAO?.savePFUserFromFBDict(dict: dict)
+            userInfoDAO?.saveCurrentUserFromFBDict(dict: dict)
         }
     }
     
@@ -176,13 +177,15 @@ class LoginVC: UIViewController  {
                 }
             }
         }
-        self.endActivityIndicator()
+        //self.endActivityIndicator()
+        ControllerHelper.stopActivityIndicator(loading: self.activityIndicator)
     }
     
     @IBAction func facebookPressed(_ sender: AnyObject) {
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryLoginFacebook), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil)
-        self.beginActivityIndicator()
+        //self.beginActivityIndicator()
+        self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
         facebookInfoDAO?.logInInBackground(withReadPermissions: [])
         
         
@@ -227,7 +230,8 @@ class LoginVC: UIViewController  {
             
             if error == nil {
                 //crear otra alerta
-                self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(email) y sigue las instrucciones indicadas")
+                //self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(email) y sigue las instrucciones indicadas")
+                ControllerHelper.sendAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(email) y sigue las instrucciones indicadas", vc: self)
             }
         }
     }
@@ -243,25 +247,30 @@ class LoginVC: UIViewController  {
             let theEmailTextfield = alertController.textFields![0] as UITextField
             let alert = Alert(errorMessage: "Error al crear al recuperar la contraseña. inténtelo de nuevo", okMessage: "Contraseña recuperada", alertTittle: "Error de contraseña", segue: "")
             
-            self.beginActivityIndicator()
-            NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryForgotPasswordPressed), name: NSNotification.Name(rawValue: DAOFactory.notificationNameRequestPasswordResetForEmail), object: nil)
-            self.userInfoDAO?.requestPasswordResetForEmail(email: theEmailTextfield.text!, alert: alert)
-            
-            /*PFUser.requestPasswordResetForEmail(inBackground: theEmailTextfield.text!, block: { (success, error) in
-                if error != nil {
-                    var errorMessage = "Error al crear al recuperar la contraseña. inténtelo de nuevo"
-                    print(error.debugDescription)
-                    if let parseError = (error as! NSError).userInfo["error"] as? String {
-                        errorMessage = parseError
+            if ControllerHelper.isValidEmail(email: theEmailTextfield.text!) == false {
+                ControllerHelper.sendAlert(title: "Verifica tus datos ", message:  "Asegurate de meter un correo electrónico correcto", vc: self)
+            } else {
+                //self.beginActivityIndicator()
+                self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
+                NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryForgotPasswordPressed), name: NSNotification.Name(rawValue: DAOFactory.notificationNameRequestPasswordResetForEmail), object: nil)
+                self.userInfoDAO?.requestPasswordResetForEmail(email: theEmailTextfield.text!, alert: alert)
+                
+                /*PFUser.requestPasswordResetForEmail(inBackground: theEmailTextfield.text!, block: { (success, error) in
+                    if error != nil {
+                        var errorMessage = "Error al crear al recuperar la contraseña. inténtelo de nuevo"
+                        print(error.debugDescription)
+                        if let parseError = (error as! NSError).userInfo["error"] as? String {
+                            errorMessage = parseError
+                        }
+                        self.presentAlert(title: "Error de contraseña", message: errorMessage)
+                    } else {
+                        //crear otra alerta
+                        self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(theEmailTextfield.text!) y sigue las instrucciones indicadas")
                     }
-                    self.presentAlert(title: "Error de contraseña", message: errorMessage)
-                } else {
-                    //crear otra alerta
-                    self.presentAlert(title: "Contraseña recuperada", message: "Mira tu bandeja de entrada de \(theEmailTextfield.text!) y sigue las instrucciones indicadas")
-                }
-            })
-             */
-             
+                })
+                 */
+            }
+            
         }
         let cancelAction = UIAlertAction(title: "Ahora no", style: .cancel, handler: nil)
         
@@ -283,7 +292,8 @@ class LoginVC: UIViewController  {
     //MARK: createNewUser
     func createNewUser() {
         let alert = Alert(errorMessage: "Error al crear el nuevo cliente. inténtelo de nuevo", okMessage: "Usuario registrado correctamente", alertTittle: "Error de registro", segue: "goToMainVC")
-        self.beginActivityIndicator()
+        //self.beginActivityIndicator()
+        self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
         self.userInfoDAO?.createNewUser(username: self.username.text!, email: self.username.text!, password: self.password.text!, alert: alert)
         
@@ -324,7 +334,8 @@ class LoginVC: UIViewController  {
                 if let parseError = (error as! NSError).userInfo["error"] as? String {
                     errorMessage = parseError
                 }
-                self.presentAlert(title: alert.alertTittle, message: errorMessage!)
+                //self.presentAlert(title: alert.alertTittle, message: errorMessage!)
+                ControllerHelper.sendAlert(title: alert.alertTittle, message: errorMessage!, vc: self)
             } else {
                 print(alert.okMessage)
                 
@@ -334,10 +345,11 @@ class LoginVC: UIViewController  {
                 }
             }
         }
-        self.endActivityIndicator()
+        //self.endActivityIndicator()
+        ControllerHelper.stopActivityIndicator(loading: activityIndicator)
     }
     
-
+    /*l
     func beginActivityIndicator() {
         self.activityIndicator = UIActivityIndicatorView(frame: CGRect(x: self.view.center.x, y: self.view.center.y, width: 50, height: 50))
         self.activityIndicator.center = self.view.center
@@ -347,13 +359,13 @@ class LoginVC: UIViewController  {
         self.activityIndicator.startAnimating()
         //no hagas caso a ningún botón más hasta que te lo indique
         UIApplication.shared.beginIgnoringInteractionEvents()
-    }
+    }*/
     
-    func endActivityIndicator() {
+    /*func endActivityIndicator() {
         self.activityIndicator.stopAnimating()
         //no hagas caso a ningún botón más hasta que te lo indique
         UIApplication.shared.endIgnoringInteractionEvents()
-    }
+    }*/
     
     
     //comprueba que ambos campos no son vacíos
@@ -363,19 +375,20 @@ class LoginVC: UIViewController  {
         if self.username.text == "" || self.password.text == "" {
             infoCompleted = false
             //envio alerta
-            self.presentAlert(title: "Verifica tus datos ", message: "Asegurate de meter usr y contraseña correctos")
+            //self.presentAlert(title: "Verifica tus datos ", message: "Asegurate de meter usr y contraseña correctos")
+            ControllerHelper.sendAlert(title: "Verifica tus datos ", message: "Asegurate de meter usr y contraseña correctos", vc: self)
         }
         
         return infoCompleted
     }
     
-    
+    /*
     func presentAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
-    }
+    }*/
 
 }
 
