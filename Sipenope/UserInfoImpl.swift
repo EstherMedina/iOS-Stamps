@@ -23,7 +23,10 @@ class UserInfoImpl: UserInfoDAO {
     //MARK: LOGIN
     func logInWithUsername(username: String, password: String, alert:Alert) {
         PFUser.logInWithUsername(inBackground: username, password: password, block: { (user, error) in
-            NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil, userInfo: ["error" : error as Any, "alert": alert])
+            var userInfo:[String: AnyObject]
+            userInfo = ["error":error as AnyObject, "alert": alert]
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil, userInfo: userInfo)
+            
         })
     }
     
@@ -35,9 +38,26 @@ class UserInfoImpl: UserInfoDAO {
         user.email = email
         user.password = password
         
+        
         user.signUpInBackground { (success, error) in
+            var userInfo:[String: AnyObject]
+            userInfo = ["error":error as AnyObject, "alert": alert]
+            NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil, userInfo: userInfo)
             
-            NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil, userInfo: ["error" : error as Any, "alert": alert])
+            if error == nil {
+                
+                PFGeoPoint.geoPointForCurrentLocation(inBackground: { (geopoint, error) in
+                    if error == nil {
+                        print("got location successfully")
+                        PFUser.current()!.setValue(geopoint, forKey:"location")
+                        PFUser.current()!.saveInBackground()
+                        
+                    } else {
+                        print(error.debugDescription)
+                    }
+
+                })
+            }
             
         }
     }
@@ -53,21 +73,26 @@ class UserInfoImpl: UserInfoDAO {
             let nickname = (PFUser.current()!.email)!.components(separatedBy: "@")[0].capitalized
             
             user = User(objectId: "", name:  (PFUser.current()!.username)!, nickname: nickname, email:  (PFUser.current()!.email)!)
-            let radius = PFUser.current()!["radius"] as! Double
             if let loc = PFUser.current()!["location"] {
-                let location = loc as? CLLocationCoordinate2D
-                user?.setLocationArea(location: location!, radius: radius)
-            } else {
-                user?.radius = radius
+                let location = loc as? PFGeoPoint
+                let locationCoord = CLLocationCoordinate2D(latitude: (location?.latitude)!, longitude: (location?.longitude)!)
+                
+                user?.location = locationCoord
             }
             
+            if let radius = PFUser.current()!["radius"]
+            {
+                user?.radius = radius as! Double
+            }
+            
+            
             if let gender = PFUser.current()!["gender"] {
-                user?.gender = gender as! Bool
+                user?.gender = (gender as! Bool)
             }
             
 
-            if PFUser.current()!["image"] != nil {
-                let image = PFUser.current()!["image"] as! PFFile
+            if let picture = PFUser.current()!["image"] {
+                let image = picture as! PFFile
                 image.getDataInBackground(block: { (imageData, error) in
                     if error != nil {
                         print(error.debugDescription)
@@ -80,6 +105,8 @@ class UserInfoImpl: UserInfoDAO {
                     
                     NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameGetCurrentUser), object: nil, userInfo: ["user" : user! as User])
                 })
+            } else {
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameGetCurrentUser), object: nil, userInfo: ["user" : user! as User])
             }
             
         }
@@ -130,7 +157,13 @@ class UserInfoImpl: UserInfoDAO {
     func saveCurrentUserFromFBDict(dict: [String : AnyObject]) {
         PFUser.current()!.email = (dict["email"] == nil) ? "" : dict["email"] as! String
         PFUser.current()!["username"] = (dict["username"] == nil) ? PFUser.current()!.email : dict["username"] as? String
-        PFUser.current()!["gender"] = (dict["gender"] == nil) ? nil : dict["gender"] as? Bool
+        if dict["gender"] != nil {
+            PFUser.current()!["gender"] = dict["gender"] as? Bool
+        }
+        if let loc = dict["location"] {
+            let location = loc as! CLLocationCoordinate2D
+            PFUser.current()!["location"] = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
+        }
         PFUser.current()!["radius"] = (dict["radius"] == nil) ? 100 : dict["radius"] as? Double
         PFUser.current()!["nickname"] = (dict["nickname"] == nil) ? (dict["email"] as? String)?.components(separatedBy: "@")[0] : dict["nickname"] as? String
         if dict["picture"] != nil {

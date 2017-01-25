@@ -63,7 +63,7 @@ class LoginVC: UIViewController  {
     }
     
 
-    //MARK: exit
+    //MARK: EXIT
     @IBAction func closeEsther(segue: UIStoryboardSegue){
         if segue.source is FirstViewController {
             print("Vengo de FirstVC!!")
@@ -219,7 +219,7 @@ class LoginVC: UIViewController  {
     
     
     
-    //MARK: forgotPasswordPressed
+    //MARK: FORGOT PASSWORD
     func AuxiliaryForgotPasswordPressed(notification: NSNotification) {
         if let notificationData = notification.userInfo as? [String : Any] {
             let error = notificationData["error"] as? Error
@@ -280,7 +280,7 @@ class LoginVC: UIViewController  {
     }
     
     
-    //MARK:signUp
+    //MARK:SIGNUP - create new user
     @IBAction func signUpPressed(_ sender: AnyObject) {
         if self.infoCompleted()  {
             self.createNewUser()
@@ -288,36 +288,41 @@ class LoginVC: UIViewController  {
         
     }
 
-    
-    //MARK: createNewUser
     func createNewUser() {
-        let alert = Alert(errorMessage: "Error al crear el nuevo cliente. inténtelo de nuevo", okMessage: "Usuario registrado correctamente", alertTittle: "Error de registro", segue: "goToMainVC")
-        //self.beginActivityIndicator()
-        self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
-        self.userInfoDAO?.createNewUser(username: self.username.text!, email: self.username.text!, password: self.password.text!, alert: alert)
-        
-        /*
-        let user = PFUser()
-        user.username = self.username.text
-        user.email = self.username.text
-        user.password = self.password.text
-        user.signUpInBackground { (success, error) in
-            if error != nil {
-                var errorMessage = "Error al crear el nuevo cliente. inténtelo de nuevo"
-                print(error.debugDescription)
-                if let parseError = (error as! NSError).userInfo["error"] as? String {
-                    errorMessage = parseError
-                }
-                self.presentAlert(title: "Error de registro", message: errorMessage)
+        if self.infoCompleted() {
+            if ControllerHelper.isValidEmail(email: self.username.text!) == false {
+                ControllerHelper.sendAlert(title: "Verifica tus datos ", message:  "Asegurate de meter un correo electrónico correcto", vc: self)
             } else {
-                print("Usuario registrado correctamente")
+                let alert = Alert(errorMessage: "Error al crear el nuevo cliente. inténtelo de nuevo", okMessage: "Usuario registrado correctamente", alertTittle: "Error de registro", segue: "goToMainVC")
+                //self.beginActivityIndicator()
+                self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
+                NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
+                self.userInfoDAO?.createNewUser(username: self.username.text!, email: self.username.text!, password: self.password.text!, alert: alert)
                 
-                //Transiciono a la siguietne pantalla
-                self.performSegue(withIdentifier: "goToMainVC", sender: self)
+                /*
+                let user = PFUser()
+                user.username = self.username.text
+                user.email = self.username.text
+                user.password = self.password.text
+                user.signUpInBackground { (success, error) in
+                    if error != nil {
+                        var errorMessage = "Error al crear el nuevo cliente. inténtelo de nuevo"
+                        print(error.debugDescription)
+                        if let parseError = (error as! NSError).userInfo["error"] as? String {
+                            errorMessage = parseError
+                        }
+                        self.presentAlert(title: "Error de registro", message: errorMessage)
+                    } else {
+                        print("Usuario registrado correctamente")
+                        
+                        //Transiciono a la siguietne pantalla
+                        self.performSegue(withIdentifier: "goToMainVC", sender: self)
+                    }
+                }
+                 */
+
             }
         }
-         */
     }
     
 

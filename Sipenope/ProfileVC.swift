@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SWRevealViewController
+import CoreLocation
 
 class ProfileVC: UIViewController{
     
@@ -21,17 +22,25 @@ class ProfileVC: UIViewController{
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var radiusOfInterestLabel: UILabel!
+    @IBOutlet weak var location: UILabel!
 
     var birthDate : Date = Date()
     var loading = UIActivityIndicatorView()
     let userInfoDAO = DAOFactory.sharedInstance.userInfoDAO
     var currentUser : User?
+    var locationValue: CLLocationCoordinate2D?
     
     
+    //MARK: CHANGE LOCATION
+    @IBAction func changeLocation(_ sender: Any) {
+    }
+
+    //MARK: CHANGE RADIUS
     @IBAction func changeRadius(_ sender: UISlider) {
         radiusOfInterestLabel.text = "\(Int(sender.value))"
     }
     
+    //MARK SWITH
     @IBAction func swichChanged(_ sender: Any) {
         if self.swichGender.isOn == true {
             self.gender.text = "Mujer"
@@ -40,6 +49,7 @@ class ProfileVC: UIViewController{
         }
     }
     
+    //MARK PHOTO
     @IBAction func pickPhoto(_ sender: AnyObject) {
         let alerController = UIAlertController(title: "selecciona una imagen", message: "¿De dónde deseas seleccionar la imagen?", preferredStyle: .actionSheet)
         let libraryAction = UIAlertAction(title: "Biblioteca de fotos", style: .default) { (action) in
@@ -59,6 +69,7 @@ class ProfileVC: UIViewController{
         
     }
     
+    //MARK: LOGOUT
     func AuxiliaryLogOut(notification: NSNotification) {
         performSegue(withIdentifier: "logout", sender: nil)
     }
@@ -70,6 +81,7 @@ class ProfileVC: UIViewController{
     }
     
 
+    //MARK: SAVE
      @IBAction func saveProfile(_ sender: AnyObject) {
         //almaceno los datos en el usuario
         //let userObject = currentUser
@@ -77,8 +89,9 @@ class ProfileVC: UIViewController{
         
         if infoCompleted() {
             dict["email"] = self.emailTextField.text
+            dict["username"] = self.emailTextField.text
             
-            dict["username"] = self.nameTextField.text
+            dict["nickname"] = self.nameTextField.text
             
             if gender.text != "" {
                 dict["gender"] = self.swichGender.isOn
@@ -88,9 +101,15 @@ class ProfileVC: UIViewController{
                 dict["radius"] = Double(self.radiusOfInterestLabel.text!)!
             }
             
-            let imageData = UIImageJPEGRepresentation(self.userImageView.image!, 0.8)! as Data
-            if self.userImageView.image != nil {
-                dict["picture"] = imageData
+            if let image = self.userImageView.image {
+                let imageData = UIImageJPEGRepresentation(image, 0.8)! as Data
+                if self.userImageView.image != nil {
+                    dict["picture"] = imageData
+                }
+            }
+            
+            if let loc = self.locationValue {
+                dict["location"] = loc
             }
             
             ControllerHelper.startActivityIndicator(loading: loading, view: self.view, style: UIActivityIndicatorViewStyle.whiteLarge)
@@ -130,7 +149,7 @@ class ProfileVC: UIViewController{
     
 
     
-    
+    //MARK: GET CURRENT USER
     func AuxiliaryGetCurrentUser(notification: NSNotification) {
         if let notificationData = notification.userInfo as? [String : Any] {
             let user = notificationData["user"] as! User
@@ -163,10 +182,20 @@ class ProfileVC: UIViewController{
             self.radiusOfInterestLabel.text = "\(Int((self.currentUser?.radius)!))"
             self.sliderRadius.value = Float((self.currentUser?.radius)!)
             
+            //location
+            if let location = self.currentUser?.location {
+                self.locationValue = (location as CLLocationCoordinate2D)
+                self.location.text = "   (\(String(format: "%.2f", (self.locationValue?.latitude)!)), \(String(format: "%.2f", (self.locationValue?.longitude)!)))"
+            } else {
+                self.location.text = " (0.00, 0.00)"
+            }
+            
 
         }
     }
     
+    
+    //MARK: DEFAULT
     override func viewDidLoad() {
         super.viewDidLoad()
         

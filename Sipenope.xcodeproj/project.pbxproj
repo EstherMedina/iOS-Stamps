@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		112F82B5DC0797655A58CD0B /* Pods_Sipenope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */; };
 		FE9F82A01E377BBF00489A57 /* ControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9F829F1E377BBF00489A57 /* ControllerHelper.swift */; };
+		FEAA4E491E38D28700D0E4C9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E481E38D28700D0E4C9 /* MapVC.swift */; };
 		FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */; };
 		FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */; };
 		FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E201E24D97100AD8B41 /* SecondViewController.swift */; };
@@ -41,6 +42,7 @@
 		BE007AD0C8D86428E74F93F7 /* Pods-Sipenope.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sipenope.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sipenope/Pods-Sipenope.release.xcconfig"; sourceTree = "<group>"; };
 		F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sipenope.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9F829F1E377BBF00489A57 /* ControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerHelper.swift; sourceTree = "<group>"; };
+		FEAA4E481E38D28700D0E4C9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		FEB75E191E24D97100AD8B41 /* Sipenope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sipenope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				FEF534401E3617CA00E5EED5 /* ProfileVC.swift */,
+				FEAA4E481E38D28700D0E4C9 /* MapVC.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */,
 				FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */,
 				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
+				FEAA4E491E38D28700D0E4C9 /* MapVC.swift in Sources */,
 				FEF5343E1E35F3C500E5EED5 /* Alert.swift in Sources */,
 				FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */,
 				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
