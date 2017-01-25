@@ -438,7 +438,6 @@
                                                 <state key="normal" title="Cambiar"/>
                                                 <connections>
                                                     <action selector="changeLocation:" destination="3og-9e-rf1" eventType="touchUpInside" id="UIt-hr-KRq"/>
-                                                    <segue destination="FTK-wb-Acw" kind="show" id="bXb-BX-gXe"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -513,6 +512,7 @@
                         <outlet property="swichGender" destination="Xkh-zH-gkO" id="Lki-Lb-2QV"/>
                         <outlet property="userImageView" destination="O0y-kY-Tna" id="OQz-8e-V5p"/>
                         <segue destination="kJV-Np-XdZ" kind="show" identifier="logout" id="c4R-5l-4oR"/>
+                        <segue destination="wgp-eA-Kvp" kind="show" identifier="GoToMap" id="uHV-7O-gTi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEP-6W-UxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -533,6 +533,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-Yi-Ylb">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wgp-eA-Kvp" id="R76-v3-1QN"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -546,17 +549,21 @@
                     <navigationItem key="navigationItem" title="Location" id="JKC-mg-F6A" userLabel="Location">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rp9-Ku-ww5">
                             <connections>
-                                <segue destination="FTK-wb-Acw" kind="show" id="hds-5g-hCN"/>
+                                <segue destination="88n-sS-Oq5" kind="unwind" unwindAction="closeMapWithSegue:" id="SwW-zE-OfJ"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ez9-Zg-yM9">
                             <connections>
-                                <segue destination="3og-9e-rf1" kind="show" id="Shz-ej-uun"/>
+                                <segue destination="88n-sS-Oq5" kind="unwind" unwindAction="closeMapWithSegue:" id="Xx0-mW-eYA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="map" destination="s0n-Yi-Ylb" id="Jdh-cv-IKM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ord-Di-MNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="88n-sS-Oq5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2952.8000000000002" y="1073.6131934032985"/>
         </scene>
@@ -649,7 +656,6 @@
         <image name="send-photo" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Shz-ej-uun"/>
-        <segue reference="hds-5g-hCN"/>
+        <segue reference="uHV-7O-gTi"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -33,6 +33,7 @@ class ProfileVC: UIViewController{
     
     //MARK: CHANGE LOCATION
     @IBAction func changeLocation(_ sender: Any) {
+        self.performSegue(withIdentifier: "GoToMap", sender: nil)
     }
 
     //MARK: CHANGE RADIUS
@@ -221,6 +222,28 @@ class ProfileVC: UIViewController{
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GoToMap" {
+            let map = segue.destination as! MapVC
+            map.location = self.locationValue
+        }
+     }
+    
+    @IBAction func closeMap(segue: UIStoryboardSegue){
+        if let map = segue.source as? MapVC {
+            if let loc = map.location {
+                self.locationValue = loc
+            }
+        }
+    }
+
+    
+
     
     
     // MARK: GENERAL
