@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import Parse
+//import Parse
 import ParseFacebookUtilsV4
 import FBSDKCoreKit
 import FBSDKShareKit
@@ -45,7 +45,7 @@ class FacebookInfoImpl: FacebookInfoDAO {
                 //process ok
                 //mandar notificacion
                 NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil, userInfo: ["user" : user as Any, "error" : error as Any])
-            }
+            } 
         }
         
     }
@@ -79,7 +79,20 @@ class FacebookInfoImpl: FacebookInfoDAO {
     
     
     func callFBSDKGraphRequest() {
-        FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
+        let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"])
+        //let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"username"])
+        //let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"username"], tokenString: nil, version: nil, httpMethod: "GET")
+        request?.start(completionHandler: { (conecction, result, error) in
+            if (error == nil){
+                let dict = result as! [String : AnyObject]
+                
+                //process ok
+                //mandar notificacion
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil, userInfo: ["dict" : dict as [String : AnyObject]])
+            }
+
+        })
+        /*FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
             if (error == nil){
                 let dict = result as! [String : AnyObject]
                 
@@ -88,7 +101,7 @@ class FacebookInfoImpl: FacebookInfoDAO {
                 NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil, userInfo: ["dict" : dict as [String : AnyObject]])
             }
         })
-        
+        */
     }
     
 }

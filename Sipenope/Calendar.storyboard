@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BirthdateVC-->
+        <scene sceneID="acG-06-KS5">
+            <objects>
+                <viewController id="m8N-c8-9d2" customClass="BirthdateVC" customModule="Sipenope" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="n3o-do-408"/>
+                        <viewControllerLayoutGuide type="bottom" id="IPw-gu-pfa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oV8-55-ZAH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zze-wC-USU">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Birthdate" id="Hgv-pn-7yi">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="reply" id="Ncf-zE-lHO"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="JjO-vE-wFZ">
+                                <rect key="frame" x="28" y="226" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="504870457.68988401">
+                                    <!--2016-12-31 09:47:37 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="JjO-vE-wFZ" firstAttribute="centerX" secondItem="oV8-55-ZAH" secondAttribute="centerX" id="EXf-si-FzV"/>
+                            <constraint firstItem="JjO-vE-wFZ" firstAttribute="centerY" secondItem="oV8-55-ZAH" secondAttribute="centerY" id="XME-Sx-lrV"/>
+                            <constraint firstItem="JjO-vE-wFZ" firstAttribute="centerX" secondItem="oV8-55-ZAH" secondAttribute="centerX" id="m5R-bN-R3v"/>
+                            <constraint firstItem="JjO-vE-wFZ" firstAttribute="centerY" secondItem="oV8-55-ZAH" secondAttribute="centerY" id="oww-Ct-auk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="birthdatePicker" destination="JjO-vE-wFZ" id="Ehu-gK-EQ7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bt3-bt-8Ld" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-70" y="725"/>
+        </scene>
+    </scenes>
+</document>

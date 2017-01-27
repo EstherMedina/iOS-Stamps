@@ -18,6 +18,7 @@
 import UIKit
 
 
+
 class LoginVC: UIViewController  {
     
     var dict : [String : AnyObject]!
@@ -48,12 +49,21 @@ class LoginVC: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameRequestPasswordResetForEmail), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameSaveCurrentUserFromFBDict), object: nil)
+        
+        
         if (facebookInfoDAO?.isCurrentAccessTokenNil() == false)
         {
             // User is already logged in, do work such as go to next view controller.
             print("Hemos entrado correctamente con facebook")
             self.performSegue(withIdentifier: "goToMainVC", sender: nil)
         }
+        
      }
     
     
@@ -84,7 +94,8 @@ class LoginVC: UIViewController  {
             
             NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil)
             userInfoDAO?.logInWithUsername(username: self.username.text!, password: self.password.text!, alert: alert)
-    
+
+
             
             /*
             PFUser.logInWithUsername(inBackground: self.username.text!, password: self.password.text!, block: { (user, error) in
@@ -112,11 +123,22 @@ class LoginVC: UIViewController  {
     
 
     //MARK: FACEBOOK
+    func AuxiliaryGoToMainVC(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
+        self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+    }
+    
     func AuxiliaryGetFBUserData(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
         if let notificationData = notification.userInfo as? [String : Any] {
             let dict = notificationData["dict"] as! [String : AnyObject]
             
+            NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryGoToMainVC), name: NSNotification.Name(rawValue: DAOFactory.notificationNameSaveCurrentUserFromFBDict), object: nil)
             userInfoDAO?.saveCurrentUserFromFBDict(dict: dict)
+            
+            
         }
     }
     
@@ -126,9 +148,11 @@ class LoginVC: UIViewController  {
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryGetFBUserData), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil)
         facebookInfoDAO?.callFBSDKGraphRequest()
+ 
         
-        /*
-         FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
+        
+        
+         /*FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
          if (error == nil){
          self.dict = result as! [String : AnyObject]
          print(result!)
@@ -156,11 +180,13 @@ class LoginVC: UIViewController  {
          PFUser.current()!.saveInBackground()
          })
          }
-         })
-         */
+         })*/
+         
     }
 
     func AuxiliaryLoginFacebook(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
         if let notificationData = notification.userInfo as? [String : Any] {
             let error = notificationData["error"] as? Error
             let user = notificationData["user"] as Any
@@ -170,7 +196,7 @@ class LoginVC: UIViewController  {
                     print("User signed up and logged in with Facebook! \(user)")
                     self.getFBUserData()
                     
-                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                    
                 } else {
                     print("User logged in via Facebook \(user)")
                     self.performSegue(withIdentifier: "goToMainVC", sender: nil)
@@ -221,6 +247,8 @@ class LoginVC: UIViewController  {
     
     //MARK: FORGOT PASSWORD
     func AuxiliaryForgotPasswordPressed(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
         if let notificationData = notification.userInfo as? [String : Any] {
             let error = notificationData["error"] as? Error
             let email = notificationData["email"] as! String
@@ -254,6 +282,9 @@ class LoginVC: UIViewController  {
                 self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
                 NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryForgotPasswordPressed), name: NSNotification.Name(rawValue: DAOFactory.notificationNameRequestPasswordResetForEmail), object: nil)
                 self.userInfoDAO?.requestPasswordResetForEmail(email: theEmailTextfield.text!, alert: alert)
+                
+                
+
                 
                 /*PFUser.requestPasswordResetForEmail(inBackground: theEmailTextfield.text!, block: { (success, error) in
                     if error != nil {
@@ -299,6 +330,7 @@ class LoginVC: UIViewController  {
                 NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
                 self.userInfoDAO?.createNewUser(username: self.username.text!, email: self.username.text!, password: self.password.text!, alert: alert)
                 
+                
                 /*
                 let user = PFUser()
                 user.username = self.username.text
@@ -329,6 +361,8 @@ class LoginVC: UIViewController  {
     
     //MARK: GENERAL
     func AuxiliaryAlertOrSegue(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
         if let notificationData = notification.userInfo as? [String : Any] {
             let error = notificationData["error"] as? Error
             let alert = notificationData["alert"] as! Alert

@@ -20,11 +20,8 @@ class DAOFactory: NSObject {
     static let notificationNameRequestPasswordResetForEmail = "RequestPasswordResetForEmailEnded"
     static let notificationNameGetCurrentUser = "GetCurrentUserEnded"
     static let notificationNamelogOutInBackgroundBlock = "LogOutInBackgroundBlockEnded"
-    
-    
-    
-    
-    
+    static let notificationNameSaveCurrentUserFromFBDict = "SaveCurrentUserFromFBDictEnded"
+
     
     static let sharedInstance: DAOFactory = DAOFactory()
     var connectInfoDAO: ConnectInfoDAO?

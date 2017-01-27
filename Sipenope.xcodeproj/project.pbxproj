@@ -10,6 +10,10 @@
 		112F82B5DC0797655A58CD0B /* Pods_Sipenope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */; };
 		FE9F82A01E377BBF00489A57 /* ControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9F829F1E377BBF00489A57 /* ControllerHelper.swift */; };
 		FEAA4E491E38D28700D0E4C9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E481E38D28700D0E4C9 /* MapVC.swift */; };
+		FEAA4E4B1E3B647800D0E4C9 /* Calendar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E4A1E3B647800D0E4C9 /* Calendar.storyboard */; };
+		FEAA4E531E3B6A6300D0E4C9 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E511E3B6A6300D0E4C9 /* Profile.storyboard */; };
+		FEAA4E551E3B6B3700D0E4C9 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E541E3B6B3700D0E4C9 /* Chat.storyboard */; };
+		FEAA4E5C1E3B704900D0E4C9 /* windows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E5A1E3B704900D0E4C9 /* windows.storyboard */; };
 		FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */; };
 		FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */; };
 		FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E201E24D97100AD8B41 /* SecondViewController.swift */; };
@@ -43,6 +47,10 @@
 		F76A891BF6797B498B31DEC7 /* Pods_Sipenope.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sipenope.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE9F829F1E377BBF00489A57 /* ControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControllerHelper.swift; sourceTree = "<group>"; };
 		FEAA4E481E38D28700D0E4C9 /* MapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		FEAA4E4A1E3B647800D0E4C9 /* Calendar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Calendar.storyboard; sourceTree = "<group>"; };
+		FEAA4E521E3B6A6300D0E4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		FEAA4E541E3B6B3700D0E4C9 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		FEAA4E5B1E3B704900D0E4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/windows.storyboard; sourceTree = "<group>"; };
 		FEB75E191E24D97100AD8B41 /* Sipenope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sipenope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +119,38 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		FEAA4E561E3B6B6500D0E4C9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				FEAA4E541E3B6B3700D0E4C9 /* Chat.storyboard */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		FEAA4E571E3B6B6C00D0E4C9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				FEAA4E511E3B6A6300D0E4C9 /* Profile.storyboard */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		FEAA4E581E3B6BA600D0E4C9 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				FEAA4E4A1E3B647800D0E4C9 /* Calendar.storyboard */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		FEAA4E5D1E3B717E00D0E4C9 /* windows */ = {
+			isa = PBXGroup;
+			children = (
+				FEAA4E5A1E3B704900D0E4C9 /* windows.storyboard */,
+			);
+			name = windows;
+			sourceTree = "<group>";
+		};
 		FEB75E101E24D97100AD8B41 = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +211,10 @@
 			children = (
 				FEB75E221E24D97100AD8B41 /* Main.storyboard */,
 				FEB75E271E24D97100AD8B41 /* LaunchScreen.storyboard */,
+				FEAA4E5D1E3B717E00D0E4C9 /* windows */,
+				FEAA4E581E3B6BA600D0E4C9 /* Calendar */,
+				FEAA4E571E3B6B6C00D0E4C9 /* Profile */,
+				FEAA4E561E3B6B6500D0E4C9 /* Chat */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -179,8 +223,8 @@
 			isa = PBXGroup;
 			children = (
 				FEF534441E3625A400E5EED5 /* Utils */,
-				FEF5343F1E3617BB00E5EED5 /* Profile */,
 				FEB75E361E24F68C00AD8B41 /* Login */,
+				FEF5343F1E3617BB00E5EED5 /* Profile */,
 				FEB75E451E26225600AD8B41 /* Chat */,
 				FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */,
 				FEB75E201E24D97100AD8B41 /* SecondViewController.swift */,
@@ -315,9 +359,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEAA4E551E3B6B3700D0E4C9 /* Chat.storyboard in Resources */,
+				FEAA4E531E3B6A6300D0E4C9 /* Profile.storyboard in Resources */,
 				FEB75E291E24D97100AD8B41 /* LaunchScreen.storyboard in Resources */,
 				FEB75E261E24D97100AD8B41 /* Images.xcassets in Resources */,
+				FEAA4E5C1E3B704900D0E4C9 /* windows.storyboard in Resources */,
 				FEB75E241E24D97100AD8B41 /* Main.storyboard in Resources */,
+				FEAA4E4B1E3B647800D0E4C9 /* Calendar.storyboard in Resources */,
 				FEB75E441E25105D00AD8B41 /* SipeNope.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +454,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		FEAA4E511E3B6A6300D0E4C9 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEAA4E521E3B6A6300D0E4C9 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		FEAA4E5A1E3B704900D0E4C9 /* windows.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FEAA4E5B1E3B704900D0E4C9 /* Base */,
+			);
+			name = windows.storyboard;
+			sourceTree = "<group>";
+		};
 		FEB75E221E24D97100AD8B41 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

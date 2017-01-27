@@ -82,7 +82,7 @@ class UserInfoImpl: UserInfoDAO {
             
             if let radius = PFUser.current()!["radius"]
             {
-                user?.radius = radius as! Double
+                user?.radius = Double(radius as! Int)
             }
             
             
@@ -155,14 +155,27 @@ class UserInfoImpl: UserInfoDAO {
     
     //MARK: SAVE
     func saveCurrentUserFromFBDict(dict: [String : AnyObject]) {
+        if let loc = dict["location"] {
+            let location = loc as! CLLocationCoordinate2D
+            PFUser.current()!["location"] = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
+        } else {
+            PFGeoPoint.geoPointForCurrentLocation(inBackground: { (geopoint, error) in
+                if error == nil {
+                    print("got location successfully")
+                    PFUser.current()!.setValue(geopoint, forKey:"location")
+                    PFUser.current()!.saveInBackground()
+                } else {
+                    print(error.debugDescription)
+                }
+                
+            })
+
+        }
+        
         PFUser.current()!.email = (dict["email"] == nil) ? "" : dict["email"] as! String
         PFUser.current()!["username"] = (dict["username"] == nil) ? PFUser.current()!.email : dict["username"] as? String
         if dict["gender"] != nil {
             PFUser.current()!["gender"] = dict["gender"] as? Bool
-        }
-        if let loc = dict["location"] {
-            let location = loc as! CLLocationCoordinate2D
-            PFUser.current()!["location"] = PFGeoPoint(latitude: location.latitude, longitude: location.longitude)
         }
         PFUser.current()!["radius"] = (dict["radius"] == nil) ? 100 : dict["radius"] as? Double
         PFUser.current()!["nickname"] = (dict["nickname"] == nil) ? (dict["email"] as? String)?.components(separatedBy: "@")[0] : dict["nickname"] as? String
@@ -172,7 +185,10 @@ class UserInfoImpl: UserInfoDAO {
                 let imageFile = PFFile(name: "image.jpg", data: imageData!)
                 
                 PFUser.current()!["image"] = imageFile
-                PFUser.current()!.saveInBackground()
+                PFUser.current()!.saveInBackground(block: { (result, error) in
+                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameSaveCurrentUserFromFBDict), object: nil, userInfo: [:])
+                })
+
 
             } else {
                 let pictureURL = ((dict["picture"] as! NSDictionary)["data"] as! NSDictionary)["url"] as! String
@@ -187,11 +203,16 @@ class UserInfoImpl: UserInfoDAO {
                         PFUser.current()!["image"] = imageFile
                         
                     }
-                    PFUser.current()!.saveInBackground()
+                    PFUser.current()!.saveInBackground(block: { (result, error) in
+                        NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameSaveCurrentUserFromFBDict), object: nil, userInfo: [:])
+                    })
+
                 })
             }
         } else {
-            PFUser.current()!.saveInBackground()
+            PFUser.current()!.saveInBackground(block: { (result, error) in
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameSaveCurrentUserFromFBDict), object: nil, userInfo: [:])
+            })
         }
     }
 

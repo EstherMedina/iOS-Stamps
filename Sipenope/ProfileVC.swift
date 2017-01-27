@@ -72,12 +72,16 @@ class ProfileVC: UIViewController{
     
     //MARK: LOGOUT
     func AuxiliaryLogOut(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
         performSegue(withIdentifier: "logout", sender: nil)
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.AuxiliaryLogOut), name: NSNotification.Name(rawValue: DAOFactory.notificationNamelogOutInBackgroundBlock), object: nil)
         userInfoDAO?.logOutInBackgroundBlock()
+
+        
         
     }
     
@@ -152,6 +156,8 @@ class ProfileVC: UIViewController{
     
     //MARK: GET CURRENT USER
     func AuxiliaryGetCurrentUser(notification: NSNotification) {
+        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+        
         if let notificationData = notification.userInfo as? [String : Any] {
             let user = notificationData["user"] as! User
             
@@ -200,6 +206,10 @@ class ProfileVC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNamelogOutInBackgroundBlock), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameGetCurrentUser), object: nil)
+        
         //metodo que se encarga de saber quien nos ha revelado
         if  revealViewController() != nil {
             self.menuButton.target = self.revealViewController()
@@ -213,6 +223,7 @@ class ProfileVC: UIViewController{
         userInfoDAO?.getCurrentUser()  //UsersFactory.shareInstance.currenUser
         
         
+
         
     }
     

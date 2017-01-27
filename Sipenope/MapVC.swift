@@ -27,6 +27,9 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        
+        self.mark(degrees: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,9 +40,15 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
 
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.mark(degrees: 0.005)
+    }
+    
+    
+    //MARG: GENERAL
+    func mark(degrees: Double) {
         //usar lo siguiente como zoom/apertura
-        let latDelta:CLLocationDegrees = 0.005 //cuantos grados quiero ver en mi mapa
-        let lonDelta:CLLocationDegrees = 0.005
+        let latDelta:CLLocationDegrees = degrees //cuantos grados quiero ver en mi mapa
+        let lonDelta:CLLocationDegrees = degrees
         //asociarlo al zoom
         let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta,lonDelta)
         
