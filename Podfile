@@ -20,7 +20,7 @@ target 'Sipenope' do
   pod 'FBSDKShareKit'
   pod 'ParseFacebookUtilsV4'
   
-  # Pods for SWRevealViewController
+  # Pods for SWRevealViewController: facebook app appearence
   pod 'SWRevealViewController'
 
 end

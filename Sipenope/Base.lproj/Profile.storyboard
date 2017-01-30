@@ -186,64 +186,17 @@
                         <outlet property="swichGender" destination="Xkh-zH-gkO" id="Lki-Lb-2QV"/>
                         <outlet property="userImageView" destination="O0y-kY-Tna" id="OQz-8e-V5p"/>
                         <segue destination="U9Q-Gj-AUg" kind="show" identifier="logout" id="c4R-5l-4oR"/>
-                        <segue destination="wgp-eA-Kvp" kind="show" identifier="GoToMap" id="uHV-7O-gTi"/>
+                        <segue destination="rT3-7m-kSw" kind="show" identifier="GoToMap" id="uHV-7O-gTi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pEP-6W-UxL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1273" y="1594"/>
         </scene>
-        <!--Location-->
-        <scene sceneID="bsH-SF-AEo">
-            <objects>
-                <viewController id="wgp-eA-Kvp" customClass="MapVC" customModule="Sipenope" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="31L-ss-2Eu"/>
-                        <viewControllerLayoutGuide type="bottom" id="kZJ-W7-Gpo"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="cNV-2J-9aQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="s0n-Yi-Ylb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
-                                <connections>
-                                    <outlet property="delegate" destination="wgp-eA-Kvp" id="R76-v3-1QN"/>
-                                </connections>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="kZJ-W7-Gpo" firstAttribute="top" secondItem="s0n-Yi-Ylb" secondAttribute="bottom" id="FB6-5O-5Ni"/>
-                            <constraint firstAttribute="trailing" secondItem="s0n-Yi-Ylb" secondAttribute="trailing" id="TKP-cF-OVT"/>
-                            <constraint firstItem="s0n-Yi-Ylb" firstAttribute="top" secondItem="31L-ss-2Eu" secondAttribute="bottom" id="xrm-k6-rAr"/>
-                            <constraint firstItem="s0n-Yi-Ylb" firstAttribute="leading" secondItem="cNV-2J-9aQ" secondAttribute="leading" id="zMR-aY-7gi"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Location" id="JKC-mg-F6A" userLabel="Location">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="rp9-Ku-ww5">
-                            <connections>
-                                <segue destination="88n-sS-Oq5" kind="unwind" unwindAction="closeMapWithSegue:" id="SwW-zE-OfJ"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ez9-Zg-yM9">
-                            <connections>
-                                <segue destination="88n-sS-Oq5" kind="unwind" unwindAction="closeMapWithSegue:" id="Xx0-mW-eYA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="map" destination="s0n-Yi-Ylb" id="Jdh-cv-IKM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ord-Di-MNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="88n-sS-Oq5" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2977" y="1594"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="em7-Fw-uRY">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fo5-kD-5vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FTK-wb-Acw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="PQC-4I-FEg">
@@ -252,10 +205,9 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="wgp-eA-Kvp" kind="relationship" relationship="rootViewController" id="Nsb-iV-Fc3"/>
+                        <segue destination="rT3-7m-kSw" kind="relationship" relationship="rootViewController" id="Nsb-iV-Fc3"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fo5-kD-5vZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2038" y="1594"/>
         </scene>
@@ -266,6 +218,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mvi-E8-fkP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1677" y="1044"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="rmO-R9-C44">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Map" id="rT3-7m-kSw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="A7B-ZH-MJJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sY5-ej-5wb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2977" y="1594"/>
         </scene>
     </scenes>
     <resources>

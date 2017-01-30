@@ -25,6 +25,8 @@ class LoginVC: UIViewController  {
     var activityIndicator : UIActivityIndicatorView!
     let userInfoDAO = DAOFactory.sharedInstance.userInfoDAO
     let facebookInfoDAO  = DAOFactory.sharedInstance.facebookInfoDAO
+    //let GoToNextView = "goToMainVC"
+    let GoToNextView = "GoToSWRevealViewController"
     
     
     @IBOutlet weak var username: UITextField!
@@ -36,7 +38,7 @@ class LoginVC: UIViewController  {
         super.viewDidAppear(animated)
 
         if userInfoDAO?.isCurrentUserNil() == false || facebookInfoDAO?.isCurrentAccessTokenNil() == false  {
-            self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+            self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
         }
        
         
@@ -61,7 +63,7 @@ class LoginVC: UIViewController  {
         {
             // User is already logged in, do work such as go to next view controller.
             print("Hemos entrado correctamente con facebook")
-            self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+            self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
         }
         
      }
@@ -90,7 +92,7 @@ class LoginVC: UIViewController  {
         if self.infoCompleted()  {
             //self.beginActivityIndicator()
             self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
-            let alert = Alert(errorMessage: "Error de Login. inténtelo de nuevo", okMessage: "Hemos entrado correctamente", alertTittle: "Error de login", segue: "goToMainVC")
+            let alert = Alert(errorMessage: "Error de Login. inténtelo de nuevo", okMessage: "Hemos entrado correctamente", alertTittle: "Error de login", segue: self.GoToNextView)
             
             NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInWithUsername), object: nil)
             userInfoDAO?.logInWithUsername(username: self.username.text!, password: self.password.text!, alert: alert)
@@ -109,7 +111,7 @@ class LoginVC: UIViewController  {
                     self.presentAlert(title: "Error de login", message: errorMessage)
                 } else {
                     print("Hemos entrado correctamente")
-                    self.performSegue(withIdentifier: "goToMainVC", sender: self)
+                    self.performSegue(withIdentifier: self.GoToNextView, sender: self)
                 }
             })
              */
@@ -126,7 +128,7 @@ class LoginVC: UIViewController  {
     func AuxiliaryGoToMainVC(notification: NSNotification) {
         NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
         
-        self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+        self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
     }
     
     func AuxiliaryGetFBUserData(notification: NSNotification) {
@@ -199,7 +201,7 @@ class LoginVC: UIViewController  {
                     
                 } else {
                     print("User logged in via Facebook \(user)")
-                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                    self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
                 }
             }
         }
@@ -229,10 +231,10 @@ class LoginVC: UIViewController  {
                     print("User signed up and logged in with Facebook! \(user)")
                     self.getFBUserData()
                     
-                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                    self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
                 } else {
                     print("User logged in via Facebook \(user)")
-                    self.performSegue(withIdentifier: "goToMainVC", sender: nil)
+                    self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
                 }
                 
             }
@@ -324,7 +326,7 @@ class LoginVC: UIViewController  {
             if ControllerHelper.isValidEmail(email: self.username.text!) == false {
                 ControllerHelper.sendAlert(title: "Verifica tus datos ", message:  "Asegurate de meter un correo electrónico correcto", vc: self)
             } else {
-                let alert = Alert(errorMessage: "Error al crear el nuevo cliente. inténtelo de nuevo", okMessage: "Usuario registrado correctamente", alertTittle: "Error de registro", segue: "goToMainVC")
+                let alert = Alert(errorMessage: "Error al crear el nuevo cliente. inténtelo de nuevo", okMessage: "Usuario registrado correctamente", alertTittle: "Error de registro", segue: self.GoToNextView)
                 //self.beginActivityIndicator()
                 self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
                 NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryAlertOrSegue), name: NSNotification.Name(rawValue: DAOFactory.notificationNameCreateNewUser), object: nil)
@@ -348,7 +350,7 @@ class LoginVC: UIViewController  {
                         print("Usuario registrado correctamente")
                         
                         //Transiciono a la siguietne pantalla
-                        self.performSegue(withIdentifier: "goToMainVC", sender: self)
+                        self.performSegue(withIdentifier: self.GoToNextView, sender: self)
                     }
                 }
                  */

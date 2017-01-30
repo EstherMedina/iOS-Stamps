@@ -29,7 +29,13 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
         locationManager.startUpdatingLocation()
         
         
-        self.mark(degrees: 1.0)
+        
+        
+        self.mark(degrees: 0.5)
+        
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(MapVC.action))
+        lpgr.minimumPressDuration = 2
+        map.addGestureRecognizer(lpgr)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,14 +43,39 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
         // Dispose of any resources that can be recreated.
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        self.mark(degrees: 0.05)
+    }
 
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.mark(degrees: 0.005)
-    }
-    
+
     
     //MARG: GENERAL
+    
+    
+    
+    
+    func action(gestureRecognizer: UIGestureRecognizer){
+        let touchPoint = gestureRecognizer.location(in: self.map)
+        let newCoordinate:CLLocationCoordinate2D = self.map.convert(touchPoint, toCoordinateFrom: self.map)
+        //añadir al mapa una chincheta
+        let annotation = MKPointAnnotation()
+        //donde esta la chihceta
+        annotation.coordinate = newCoordinate
+        annotation.title = "Localización nueva"
+        annotation.subtitle = "   (\(String(format: "%.2f", (newCoordinate.latitude))), \(String(format: "%.2f", (newCoordinate.longitude))))"
+        map.removeAnnotations(map.annotations)
+        map.addAnnotation(annotation)
+        
+        self.location?.latitude = newCoordinate.latitude
+        self.location?.longitude = newCoordinate.longitude
+        
+        
+    }
+
+
+    
     func mark(degrees: Double) {
         //usar lo siguiente como zoom/apertura
         let latDelta:CLLocationDegrees = degrees //cuantos grados quiero ver en mi mapa
@@ -57,8 +88,7 @@ class MapVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate{
             let region: MKCoordinateRegion = MKCoordinateRegionMake(self.location!, span)
             map.setRegion(region, animated: true)
         }
-        
-        
+
         
         
         //chincheta
