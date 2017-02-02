@@ -161,6 +161,13 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
+		FEAA4E641E43317A00D0E4C9 /* SipesNopes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SipesNopes;
+			sourceTree = "<group>";
+		};
 		FEB75E101E24D97100AD8B41 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +240,7 @@
 		FEB75E351E24F62A00AD8B41 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FEAA4E641E43317A00D0E4C9 /* SipesNopes */,
 				FEF534441E3625A400E5EED5 /* Utils */,
 				FEB75E361E24F68C00AD8B41 /* Login */,
 				FEF5343F1E3617BB00E5EED5 /* Profile */,
