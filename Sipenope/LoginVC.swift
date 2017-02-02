@@ -66,6 +66,23 @@ class LoginVC: UIViewController  {
             self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
         }
         
+        
+        
+        /*
+        //CSV
+        var myCSVContents = Array<Dictionary<String, String>>()
+        
+        ReadCSVFiles.runFunctionOnRowsFromFile(theColumnNames: ["title", "body", "category"], withFileName: "fileName", withFunction: {
+            
+            (aRow:Dictionary<String, String>) in
+            
+            myCSVContents.append(aRow)
+            
+        })
+        
+        print("echo")
+ */
+        
      }
     
     

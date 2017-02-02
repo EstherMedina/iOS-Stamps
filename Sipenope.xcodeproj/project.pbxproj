@@ -15,6 +15,9 @@
 		FEAA4E551E3B6B3700D0E4C9 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E541E3B6B3700D0E4C9 /* Chat.storyboard */; };
 		FEAA4E5C1E3B704900D0E4C9 /* windows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E5A1E3B704900D0E4C9 /* windows.storyboard */; };
 		FEAA4E621E3F3FD900D0E4C9 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E611E3F3FD900D0E4C9 /* Map.storyboard */; };
+		FEAA4E661E435B9000D0E4C9 /* ReadCSVFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E651E435B9000D0E4C9 /* ReadCSVFiles.swift */; };
+		FEAA4E681E4369B400D0E4C9 /* fileName.csv in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E671E4369B400D0E4C9 /* fileName.csv */; };
+		FEAA4E6A1E4370E800D0E4C9 /* Collectible.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E691E4370E800D0E4C9 /* Collectible.swift */; };
 		FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */; };
 		FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */; };
 		FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E201E24D97100AD8B41 /* SecondViewController.swift */; };
@@ -53,6 +56,9 @@
 		FEAA4E541E3B6B3700D0E4C9 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		FEAA4E5B1E3B704900D0E4C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/windows.storyboard; sourceTree = "<group>"; };
 		FEAA4E611E3F3FD900D0E4C9 /* Map.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		FEAA4E651E435B9000D0E4C9 /* ReadCSVFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadCSVFiles.swift; sourceTree = "<group>"; };
+		FEAA4E671E4369B400D0E4C9 /* fileName.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fileName.csv; sourceTree = "<group>"; };
+		FEAA4E691E4370E800D0E4C9 /* Collectible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collectible.swift; sourceTree = "<group>"; };
 		FEB75E191E24D97100AD8B41 /* Sipenope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sipenope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				FE9F829F1E377BBF00489A57 /* ControllerHelper.swift */,
+				FEAA4E651E435B9000D0E4C9 /* ReadCSVFiles.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -206,6 +213,7 @@
 				FEB75E2A1E24D97100AD8B41 /* Info.plist */,
 				FEB75E431E25105D00AD8B41 /* SipeNope.plist */,
 				FEB75E301E24DFD600AD8B41 /* Sipenope-Bridging-Header.h */,
+				FEAA4E671E4369B400D0E4C9 /* fileName.csv */,
 			);
 			name = Resources;
 			path = Sipenope;
@@ -217,6 +225,7 @@
 				FE9F829E1E377AC500489A57 /* Utils */,
 				FEB75E391E24F8FA00AD8B41 /* User.swift */,
 				FEB75E3B1E24F92F00AD8B41 /* Message.swift */,
+				FEAA4E691E4370E800D0E4C9 /* Collectible.swift */,
 				FEF5343D1E35F3C500E5EED5 /* Alert.swift */,
 				FEB75E371E24F6A600AD8B41 /* Daos */,
 			);
@@ -383,6 +392,7 @@
 				FEAA4E621E3F3FD900D0E4C9 /* Map.storyboard in Resources */,
 				FEB75E291E24D97100AD8B41 /* LaunchScreen.storyboard in Resources */,
 				FEB75E261E24D97100AD8B41 /* Images.xcassets in Resources */,
+				FEAA4E681E4369B400D0E4C9 /* fileName.csv in Resources */,
 				FEAA4E5C1E3B704900D0E4C9 /* windows.storyboard in Resources */,
 				FEB75E241E24D97100AD8B41 /* Main.storyboard in Resources */,
 				FEAA4E4B1E3B647800D0E4C9 /* Calendar.storyboard in Resources */,
@@ -453,9 +463,11 @@
 				FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */,
 				FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */,
 				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
+				FEAA4E661E435B9000D0E4C9 /* ReadCSVFiles.swift in Sources */,
 				FEAA4E491E38D28700D0E4C9 /* MapVC.swift in Sources */,
 				FEF5343E1E35F3C500E5EED5 /* Alert.swift in Sources */,
 				FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */,
+				FEAA4E6A1E4370E800D0E4C9 /* Collectible.swift in Sources */,
 				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
 				FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */,
 				FEB75E471E2622B200AD8B41 /* chatVC.swift in Sources */,
