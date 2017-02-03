@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507466658.546634"
+            timestampString = "507815841.952147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "325"
-            endingLineNumber = "325"
+            startingLineNumber = "330"
+            endingLineNumber = "330"
             landmarkName = "createNewUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507466658.546634"
+            timestampString = "507815841.952147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "372"
-            endingLineNumber = "372"
+            startingLineNumber = "377"
+            endingLineNumber = "377"
             landmarkName = "AuxiliaryAlertOrSegue(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,7 +554,7 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/ProfileVC.swift"
-                  timestampString = "507642606.075793"
+                  timestampString = "507817977.004369"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -569,7 +569,7 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/ProfileVC.swift"
-                  timestampString = "507642606.078167"
+                  timestampString = "507817977.006745"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -577,22 +577,6 @@
                   offsetFromSymbolStart = "5422">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507466658.546634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "getFBUserData()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -614,31 +598,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507466658.546634"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
-            landmarkName = "getFBUserData()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507466658.546634"
+            timestampString = "507815841.952147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "AuxiliaryLoginFacebook(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -666,7 +634,7 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/FacebookInfoImpl.swift"
-                  timestampString = "507642606.102356"
+                  timestampString = "507817977.015007"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "85"
@@ -681,7 +649,7 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/FacebookInfoImpl.swift"
-                  timestampString = "507642606.105319"
+                  timestampString = "507817977.01828"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
@@ -714,11 +682,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507466658.546634"
+            timestampString = "507815841.952147"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "AuxiliaryGoToMainVC(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -768,6 +736,86 @@
             startingLineNumber = "214"
             endingLineNumber = "214"
             landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/ReadCSVFiles.swift"
+            timestampString = "507817719.175409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "loadCollectablesFromCSV()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/ReadCSVFiles.swift"
+            timestampString = "507817777.679271"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "loadCollectablesFromCSV()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/ReadCSVFiles.swift"
+            timestampString = "507817801.102913"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "runFunctionOnRowsFromFile(theColumnNames:withFileName:withFunction:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/ReadCSVFiles.swift"
+            timestampString = "507817854.879281"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "runFunctionOnRowsFromFile(theColumnNames:withFileName:withFunction:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/CollectibleInfoImpl.swift"
+            timestampString = "507817899.200674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "setNewCollectibleInBackground(collectibleId:collectibleName:collectibleImage:collectibleCategory:collectibleInfo:collectionId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

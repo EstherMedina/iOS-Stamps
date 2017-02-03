@@ -12,7 +12,7 @@ import UIKit
 class ControllerHelper {
 
     //MARK: ACTIVITY INDICATOR
-    static func startActivityIndicatorInCentre(view: UIViewController, style: UIActivityIndicatorViewStyle) -> UIActivityIndicatorView {
+    class func startActivityIndicatorInCentre(view: UIViewController, style: UIActivityIndicatorViewStyle) -> UIActivityIndicatorView {
         let loading = UIActivityIndicatorView(frame: CGRect(x: view.view.center.x, y: view.view.center.y, width: 50, height: 50))
         self.startActivityIndicator(loading: loading, view: view.view, style: style)
         
@@ -20,7 +20,7 @@ class ControllerHelper {
     }
     
     
-    static func startActivityIndicator(loading: UIActivityIndicatorView, view: UIView, style: UIActivityIndicatorViewStyle){
+    class func startActivityIndicator(loading: UIActivityIndicatorView, view: UIView, style: UIActivityIndicatorViewStyle){
         loading.center = view.center
         loading.hidesWhenStopped = true
         loading.activityIndicatorViewStyle = style
@@ -29,14 +29,14 @@ class ControllerHelper {
         UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
-    static func stopActivityIndicator(loading: UIActivityIndicatorView){
+    class func stopActivityIndicator(loading: UIActivityIndicatorView){
         loading.stopAnimating()
         UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     
     //MARK: ALERTS
-    static func sendAlert(title: String, message: String, vc: UIViewController){
+    class func sendAlert(title: String, message: String, vc: UIViewController){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
@@ -45,7 +45,7 @@ class ControllerHelper {
     }
     
     //MARK: VALIDATE EMAIL
-    static func isValidEmail(email: String) -> Bool {
+    class func isValidEmail(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)

@@ -18,6 +18,10 @@
 	<string>User</string>
 	<key>classnamemessage</key>
 	<string>Message</string>
+	<key>classnamecollection</key>
+	<string>Collection</string>
+	<key>classnamecollectible</key>
+	<string>Collectible</string>
 	<key>datastore</key>
 	<string>Parse</string>
 </dict>

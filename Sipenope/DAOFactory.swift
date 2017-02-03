@@ -21,6 +21,8 @@ class DAOFactory: NSObject {
     static let notificationNameGetCurrentUser = "GetCurrentUserEnded"
     static let notificationNamelogOutInBackgroundBlock = "LogOutInBackgroundBlockEnded"
     static let notificationNameSaveCurrentUserFromFBDict = "SaveCurrentUserFromFBDictEnded"
+    static let notificationNameLoadCollectiblesFromCollection = "LoadCollectiblesFromCollectionEnded"
+    
 
     
     static let sharedInstance: DAOFactory = DAOFactory()
@@ -29,6 +31,7 @@ class DAOFactory: NSObject {
     var facebookInfoDAO: FacebookInfoDAO?
     var userInfoDAO: UserInfoDAO?
     var messageInfoDAO: MessageInfoDAO?
+    var collectibleInfoDAO: CollectibleInfoDAO?
     
     var plistData: [String: NSObject] = [:] //Our data
     
@@ -44,6 +47,9 @@ class DAOFactory: NSObject {
                 }
                 if (plistData["classnamemessage"] != nil) {
                     self.messageInfoDAO = MessageInfoImpl(plistData: self.plistData)
+                }
+                if (plistData["classnamecollectible"] != nil) {
+                    self.collectibleInfoDAO = CollectibleInfoImpl(plistData: self.plistData)
                 }
                 self.connectInfoDAO = ConnectInfoImpl(plistData: self.plistData)
                 self.aclInfoDAO = AclInfoImpl(plistData: self.plistData)

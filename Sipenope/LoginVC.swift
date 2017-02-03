@@ -67,21 +67,9 @@ class LoginVC: UIViewController  {
         }
         
         
-        
-        /*
-        //CSV
-        var myCSVContents = Array<Dictionary<String, String>>()
-        
-        ReadCSVFiles.runFunctionOnRowsFromFile(theColumnNames: ["title", "body", "category"], withFileName: "fileName", withFunction: {
-            
-            (aRow:Dictionary<String, String>) in
-            
-            myCSVContents.append(aRow)
-            
-        })
-        
-        print("echo")
- */
+        //Carga de cromos
+        //ReadCSVFiles.loadCollectablesFromCSV()
+         
         
      }
     

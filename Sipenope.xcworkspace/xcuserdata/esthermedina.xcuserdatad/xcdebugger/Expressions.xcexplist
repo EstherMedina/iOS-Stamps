@@ -53,6 +53,9 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "MapVC.viewDidLoad() -&gt; ():MapVC.swift">
+      </ContextState>
+      <ContextState
          contextName = "LoginVC.(forgotPasswordPressed(AnyObject) -&gt; ()).(closure #2).(closure #1):LoginVC.swift">
          <PersistentStrings>
             <PersistentString
@@ -61,7 +64,24 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "MapVC.viewDidLoad() -&gt; ():MapVC.swift">
+         contextName = "static ReadCSVFiles.runFunctionOnRowsFromFile(theColumnNames : [String], withFileName : String, withFunction : ([String : String]) -&gt; ()) -&gt; ():ReadCSVFiles.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.debugDescription">
+            </PersistentString>
+            <PersistentString
+               value = "objectColumns">
+            </PersistentString>
+            <PersistentString
+               value = "Bundle.main.path(forResource: &quot;fileName2&quot;, ofType: &quot;csv&quot;) ">
+            </PersistentString>
+            <PersistentString
+               value = "anObjectColumn.replacingOccurrences(of: &quot;\&quot;&quot;, with: &quot;&quot;, options: NSString.CompareOptions.caseInsensitive, range: nil)">
+            </PersistentString>
+            <PersistentString
+               value = "NSString(contentsOfFile: strBundle, encoding: String.Encoding.utf8.rawValue)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "FacebookInfoImpl.wasIntendedForFacebookSDK(application : UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:FacebookInfoImpl.swift">
@@ -113,10 +133,10 @@
          contextName = "ChatVC.requestMessages(notification : NSNotification) -&gt; ():chatVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "messageInfo?.receiverId">
+               value = "messageInfo?.senderId ">
             </PersistentString>
             <PersistentString
-               value = "messageInfo?.senderId ">
+               value = "messageInfo?.receiverId">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -148,10 +168,10 @@
          contextName = "UserInfoImpl.saveCurrentUserFromFBDict(dict : [String : AnyObject]) -&gt; ():UserInfoImpl.swift">
          <PersistentStrings>
             <PersistentString
-               value = "(dict[&quot;gender&quot;] == nil) ? nil : dict[&quot;gender&quot;] as? Bool">
+               value = "(loc as CLLocationCoordinate2D).latitude">
             </PersistentString>
             <PersistentString
-               value = "(loc as CLLocationCoordinate2D).latitude">
+               value = "(dict[&quot;gender&quot;] == nil) ? nil : dict[&quot;gender&quot;] as? Bool">
             </PersistentString>
             <PersistentString
                value = "PFUser.current()![&quot;gender&quot;]  = dict[&quot;gender&quot;] ">
@@ -205,6 +225,22 @@
          <PersistentStrings>
             <PersistentString
                value = "PFUser.current()![&quot;image&quot;]  as! PFFile">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginVC.(viewDidLoad() -&gt; ()).(closure #1):LoginVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "myCSVContents[0][&quot;title&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CollectibleInfoImpl.setNewCollectibleInBackground(collectibleId : String, collectibleName : String, collectibleImage : UIImage?, collectibleCategory : String, collectibleInfo : String, collectionId : String) -&gt; ():CollectibleInfoImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.plistData[&quot;classnamecollectible&quot;]! as! String">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -272,6 +308,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FacebookInfoImpl.(callFBSDKGraphRequest() -&gt; ()).(closure #1):FacebookInfoImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.debugDescription">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "AppDelegate.application(UIApplication, didFinishLaunchingWithOptions : [UIApplicationLaunchOptionsKey : Any]?) -&gt; Bool:AppDelegate.swift">
          <PersistentStrings>
             <PersistentString
@@ -283,23 +327,18 @@
          contextName = "LoginVC.viewDidAppear(Bool) -&gt; ():LoginVC.swift">
          <PersistentStrings>
             <PersistentString
+               value = "FBSDKAccessToken.current()">
+            </PersistentString>
+            <PersistentString
                value = "userInfoDAO?.isCurrentUserNil()">
             </PersistentString>
             <PersistentString
                value = "facebookInfoDAO?.isCurrentAccessTokenNil()">
             </PersistentString>
-            <PersistentString
-               value = "FBSDKAccessToken.current()">
-            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "FacebookInfoImpl.(callFBSDKGraphRequest() -&gt; ()).(closure #1):FacebookInfoImpl.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "error.debugDescription">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "static ReadCSVFiles.loadCollectablesFromCSV() -&gt; ():ReadCSVFiles.swift">
       </ContextState>
       <ContextState
          contextName = "MessageInfoImpl.(loadMessages(userId : String, myUserId : String) -&gt; ()).(closure #1):MessageInfoImpl.swift">
