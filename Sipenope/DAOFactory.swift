@@ -22,6 +22,18 @@ class DAOFactory: NSObject {
     static let notificationNamelogOutInBackgroundBlock = "LogOutInBackgroundBlockEnded"
     static let notificationNameSaveCurrentUserFromFBDict = "SaveCurrentUserFromFBDictEnded"
     static let notificationNameLoadCollectiblesFromCollection = "LoadCollectiblesFromCollectionEnded"
+    static let notificationNameLoadNopeFromCollection = "LoadNopeFromCollectionEnded"
+    static let notificationNameLoadRepeFromCollection = "LoadRepeFromCollectionEnded"
+    static let notificationNameLoadNope = "LoadNopeEnded"
+    static let notificationNameLoadRepe = "LoadRepeEnded"
+    static let notificationNameLoadNopeAllUsers = "LoadNopeAllUsersEnded"
+    static let notificationNameLoadRepeAllUsers = "LoadRepeAllUsersEnded"
+    static let notificationNameLoadRepeAll = "LoadRepeAllEnded"
+    static let notificationNameLoadNopeAll = "LoadNopeAllEnded"
+    static let notificationNameUsersIdInRadius = "UsersIdInRadiusEnded"
+    
+    
+    
     
 
     
@@ -32,6 +44,9 @@ class DAOFactory: NSObject {
     var userInfoDAO: UserInfoDAO?
     var messageInfoDAO: MessageInfoDAO?
     var collectibleInfoDAO: CollectibleInfoDAO?
+    var nopeInfoDAO: NopeInfoDAO?
+    var repeInfoDAO: RepeInfoDAO?
+    
     
     var plistData: [String: NSObject] = [:] //Our data
     
@@ -50,6 +65,12 @@ class DAOFactory: NSObject {
                 }
                 if (plistData["classnamecollectible"] != nil) {
                     self.collectibleInfoDAO = CollectibleInfoImpl(plistData: self.plistData)
+                }
+                if (plistData["classnamenope"] != nil) {
+                    self.nopeInfoDAO = NopeInfoImpl(plistData: self.plistData)
+                }
+                if (plistData["classnamerepe"] != nil) {
+                    self.repeInfoDAO = RepeInfoImpl(plistData: self.plistData)
                 }
                 self.connectInfoDAO = ConnectInfoImpl(plistData: self.plistData)
                 self.aclInfoDAO = AclInfoImpl(plistData: self.plistData)

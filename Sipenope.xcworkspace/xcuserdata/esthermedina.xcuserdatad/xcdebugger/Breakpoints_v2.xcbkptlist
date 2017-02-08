@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/FacebookInfoImpl.swift"
-            timestampString = "506944028.071988"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "wasIntendedForFacebookSDK(application:didFinishLaunchingWithOptions:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/FacebookInfoImpl.swift"
-            timestampString = "506944028.071988"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "wasIntendedForFacebookSDK(app:open:options:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507815841.952147"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "createNewUser()"
             landmarkType = "7">
          </BreakpointContent>
@@ -298,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/LoginVC.swift"
-            timestampString = "507815841.952147"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "AuxiliaryAlertOrSegue(notification:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -554,7 +554,7 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/ProfileVC.swift"
-                  timestampString = "507817977.004369"
+                  timestampString = "508253915.298063"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -569,7 +569,7 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/ProfileVC.swift"
-                  timestampString = "507817977.006745"
+                  timestampString = "508253915.300188"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "116"
@@ -586,11 +586,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/FacebookInfoImpl.swift"
-            timestampString = "507115091.4775"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "callFBSDKGraphRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -618,11 +618,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/FacebookInfoImpl.swift"
-            timestampString = "507201863.929377"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "callFBSDKGraphRequest()"
             landmarkType = "7">
             <Locations>
@@ -634,11 +634,11 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/FacebookInfoImpl.swift"
-                  timestampString = "507817977.015007"
+                  timestampString = "508253915.307464"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
+                  startingLineNumber = "108"
+                  endingLineNumber = "108"
                   offsetFromSymbolStart = "367">
                </Location>
                <Location
@@ -649,11 +649,11 @@
                   moduleName = "Sipenope"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/esthermedina/Desktop/Swift/Cursos/IOS10/Sipenope/Sipenope/FacebookInfoImpl.swift"
-                  timestampString = "507817977.01828"
+                  timestampString = "508253915.309406"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
                   offsetFromSymbolStart = "23">
                </Location>
             </Locations>
@@ -666,11 +666,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/FacebookInfoImpl.swift"
-            timestampString = "507205777.506307"
+            timestampString = "508253913.924926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "callFBSDKGraphRequest()"
             landmarkType = "7">
          </BreakpointContent>
@@ -746,38 +746,6 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sipenope/ReadCSVFiles.swift"
-            timestampString = "507817719.175409"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "loadCollectablesFromCSV()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sipenope/ReadCSVFiles.swift"
-            timestampString = "507817777.679271"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "loadCollectablesFromCSV()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sipenope/ReadCSVFiles.swift"
             timestampString = "507817801.102913"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
@@ -816,6 +784,38 @@
             startingLineNumber = "27"
             endingLineNumber = "27"
             landmarkName = "setNewCollectibleInBackground(collectibleId:collectibleName:collectibleImage:collectibleCategory:collectibleInfo:collectionId:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/FacebookInfoImpl.swift"
+            timestampString = "508254000.373318"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "logInInBackground(withReadPermissions:withFunction:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Sipenope/LoginVC.swift"
+            timestampString = "508254045.701802"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "facebookPressed(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

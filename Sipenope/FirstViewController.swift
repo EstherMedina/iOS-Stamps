@@ -13,9 +13,7 @@ class FirstViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        let userInfoDAO = DAOFactory.sharedInstance.userInfoDAO
+
     }
 
     override func didReceiveMemoryWarning() {

@@ -191,7 +191,7 @@ class LoginVC: UIViewController  {
          
     }
 
-    func AuxiliaryLoginFacebook(notification: NSNotification) {
+    /*func AuxiliaryLoginFacebook(notification: NSNotification) {
         NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
         
         if let notificationData = notification.userInfo as? [String : Any] {
@@ -199,7 +199,7 @@ class LoginVC: UIViewController  {
             let user = notificationData["user"] as Any
             
             if error == nil {
-                if  (userInfoDAO?.isUserNew(user: user))! {
+                if  (self.userInfoDAO?.isUserNew(user: user))! {
                     print("User signed up and logged in with Facebook! \(user)")
                     self.getFBUserData()
                     
@@ -212,14 +212,36 @@ class LoginVC: UIViewController  {
         }
         //self.endActivityIndicator()
         ControllerHelper.stopActivityIndicator(loading: self.activityIndicator)
-    }
+    }*/
     
     @IBAction func facebookPressed(_ sender: AnyObject) {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginVC.AuxiliaryLoginFacebook), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil)
+
         //self.beginActivityIndicator()
         self.activityIndicator = ControllerHelper.startActivityIndicatorInCentre(view: self, style: UIActivityIndicatorViewStyle.gray)
-        facebookInfoDAO?.logInInBackground(withReadPermissions: [])
+        facebookInfoDAO?.logInInBackground(withReadPermissions: [], withFunction: {
+            
+            (userInfo: [String : Any]) in
+            
+            let error = userInfo["error"] as? Error
+            let user = userInfo["user"] as Any
+            
+            if error == nil {
+                if  (self.userInfoDAO?.isUserNew(user: user))! {
+                    print("User signed up and logged in with Facebook! \(user)")
+                    self.getFBUserData()
+                    
+                    
+                } else {
+                    print("User logged in via Facebook \(user)")
+                    self.performSegue(withIdentifier: self.GoToNextView, sender: nil)
+                }
+            }
+            
+            //self.endActivityIndicator()
+            ControllerHelper.stopActivityIndicator(loading: self.activityIndicator)
+            
+            
+        })
         
         
         /*

@@ -21,6 +21,12 @@
 		FEAA4E6C1E44982A00D0E4C9 /* CollectibleInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E6B1E44982A00D0E4C9 /* CollectibleInfoDAO.swift */; };
 		FEAA4E6E1E44987A00D0E4C9 /* CollectibleInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E6D1E44987A00D0E4C9 /* CollectibleInfoImpl.swift */; };
 		FEAA4E701E44A6F600D0E4C9 /* fileName.csv in Resources */ = {isa = PBXBuildFile; fileRef = FEAA4E6F1E44A6F600D0E4C9 /* fileName.csv */; };
+		FEAA4E721E4B186C00D0E4C9 /* Nope.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E711E4B186C00D0E4C9 /* Nope.swift */; };
+		FEAA4E741E4B18DF00D0E4C9 /* Repe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E731E4B18DF00D0E4C9 /* Repe.swift */; };
+		FEAA4E761E4B1A9D00D0E4C9 /* NopeInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E751E4B1A9D00D0E4C9 /* NopeInfoDAO.swift */; };
+		FEAA4E781E4B1AC000D0E4C9 /* RepeInfoDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E771E4B1AC000D0E4C9 /* RepeInfoDAO.swift */; };
+		FEAA4E7A1E4B1AE400D0E4C9 /* NopeInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E791E4B1AE400D0E4C9 /* NopeInfoImpl.swift */; };
+		FEAA4E7C1E4B1B1900D0E4C9 /* RepeInfoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAA4E7B1E4B1B1900D0E4C9 /* RepeInfoImpl.swift */; };
 		FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */; };
 		FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */; };
 		FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB75E201E24D97100AD8B41 /* SecondViewController.swift */; };
@@ -65,6 +71,12 @@
 		FEAA4E6B1E44982A00D0E4C9 /* CollectibleInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectibleInfoDAO.swift; sourceTree = "<group>"; };
 		FEAA4E6D1E44987A00D0E4C9 /* CollectibleInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectibleInfoImpl.swift; sourceTree = "<group>"; };
 		FEAA4E6F1E44A6F600D0E4C9 /* fileName.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fileName.csv; sourceTree = "<group>"; };
+		FEAA4E711E4B186C00D0E4C9 /* Nope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nope.swift; sourceTree = "<group>"; };
+		FEAA4E731E4B18DF00D0E4C9 /* Repe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repe.swift; sourceTree = "<group>"; };
+		FEAA4E751E4B1A9D00D0E4C9 /* NopeInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NopeInfoDAO.swift; sourceTree = "<group>"; };
+		FEAA4E771E4B1AC000D0E4C9 /* RepeInfoDAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeInfoDAO.swift; sourceTree = "<group>"; };
+		FEAA4E791E4B1AE400D0E4C9 /* NopeInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NopeInfoImpl.swift; sourceTree = "<group>"; };
+		FEAA4E7B1E4B1B1900D0E4C9 /* RepeInfoImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepeInfoImpl.swift; sourceTree = "<group>"; };
 		FEB75E191E24D97100AD8B41 /* Sipenope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sipenope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB75E1C1E24D97100AD8B41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FEB75E1E1E24D97100AD8B41 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +246,8 @@
 				FEB75E3B1E24F92F00AD8B41 /* Message.swift */,
 				FEAA4E691E4370E800D0E4C9 /* Collectible.swift */,
 				FEF5343D1E35F3C500E5EED5 /* Alert.swift */,
+				FEAA4E711E4B186C00D0E4C9 /* Nope.swift */,
+				FEAA4E731E4B18DF00D0E4C9 /* Repe.swift */,
 				FEB75E371E24F6A600AD8B41 /* Daos */,
 			);
 			name = Model;
@@ -285,6 +299,8 @@
 				FEB75E3F1E250D4F00AD8B41 /* UserInfoDAO.swift */,
 				FEB75E4A1E262EC300AD8B41 /* MessageInfoDAO.swift */,
 				FEAA4E6B1E44982A00D0E4C9 /* CollectibleInfoDAO.swift */,
+				FEAA4E751E4B1A9D00D0E4C9 /* NopeInfoDAO.swift */,
+				FEAA4E771E4B1AC000D0E4C9 /* RepeInfoDAO.swift */,
 				FEB75E381E24F6B600AD8B41 /* Parse */,
 			);
 			name = Daos;
@@ -299,6 +315,8 @@
 				FEB75E411E250E2600AD8B41 /* UserInfoImpl.swift */,
 				FEB75E481E262EA100AD8B41 /* MessageInfoImpl.swift */,
 				FEAA4E6D1E44987A00D0E4C9 /* CollectibleInfoImpl.swift */,
+				FEAA4E791E4B1AE400D0E4C9 /* NopeInfoImpl.swift */,
+				FEAA4E7B1E4B1B1900D0E4C9 /* RepeInfoImpl.swift */,
 			);
 			name = Parse;
 			sourceTree = "<group>";
@@ -472,6 +490,7 @@
 				FEB75E571E2CE46700AD8B41 /* FacebookInfoDAO.swift in Sources */,
 				FEF534431E36183F00E5EED5 /* BirthdateVC.swift in Sources */,
 				FEB75E511E290DAC00AD8B41 /* ConnectInfoDAO.swift in Sources */,
+				FEAA4E781E4B1AC000D0E4C9 /* RepeInfoDAO.swift in Sources */,
 				FEB75E591E2CE4E600AD8B41 /* FacebookInfoImpl.swift in Sources */,
 				FEB75E3E1E250BF500AD8B41 /* DAOFactory.swift in Sources */,
 				FEAA4E661E435B9000D0E4C9 /* ReadCSVFiles.swift in Sources */,
@@ -480,18 +499,23 @@
 				FEB75E4D1E265C2400AD8B41 /* LoginVC.swift in Sources */,
 				FEAA4E6A1E4370E800D0E4C9 /* Collectible.swift in Sources */,
 				FEB75E421E250E2600AD8B41 /* UserInfoImpl.swift in Sources */,
+				FEAA4E741E4B18DF00D0E4C9 /* Repe.swift in Sources */,
 				FEB75E211E24D97100AD8B41 /* SecondViewController.swift in Sources */,
 				FEB75E471E2622B200AD8B41 /* chatVC.swift in Sources */,
 				FEB75E4B1E262EC300AD8B41 /* MessageInfoDAO.swift in Sources */,
 				FEB75E491E262EA100AD8B41 /* MessageInfoImpl.swift in Sources */,
+				FEAA4E7C1E4B1B1900D0E4C9 /* RepeInfoImpl.swift in Sources */,
 				FEB75E3C1E24F92F00AD8B41 /* Message.swift in Sources */,
 				FEB75E551E2CE10D00AD8B41 /* AclInfoImpl.swift in Sources */,
+				FEAA4E761E4B1A9D00D0E4C9 /* NopeInfoDAO.swift in Sources */,
 				FEB75E1D1E24D97100AD8B41 /* AppDelegate.swift in Sources */,
 				FEAA4E6C1E44982A00D0E4C9 /* CollectibleInfoDAO.swift in Sources */,
 				FEB75E531E2CE07500AD8B41 /* AclInfoDAO.swift in Sources */,
 				FEB75E401E250D4F00AD8B41 /* UserInfoDAO.swift in Sources */,
 				FEB75E1F1E24D97100AD8B41 /* FirstViewController.swift in Sources */,
+				FEAA4E7A1E4B1AE400D0E4C9 /* NopeInfoImpl.swift in Sources */,
 				FEB75E4F1E290D7A00AD8B41 /* ConnectInfoImpl.swift in Sources */,
+				FEAA4E721E4B186C00D0E4C9 /* Nope.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

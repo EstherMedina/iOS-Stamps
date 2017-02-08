@@ -15,7 +15,9 @@ protocol UserInfoDAO {
     
     init(plistData: [String: NSObject])
     
-    func getCurrentUser() 
+    func getCurrentUser()
+    
+    func getUsersIdInRadius(radius: Double) 
 
     func getUsers() -> [User]
     

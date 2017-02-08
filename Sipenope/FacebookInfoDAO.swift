@@ -29,6 +29,8 @@ protocol FacebookInfoDAO {
     
     func logInInBackground(withReadPermissions: [String])
     
+    func logInInBackground(withReadPermissions: [String], withFunction theFunction: @escaping ([String : Any])->())
+    
     func callFBSDKGraphRequest()
 }
 

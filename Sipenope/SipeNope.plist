@@ -22,6 +22,10 @@
 	<string>Collection</string>
 	<key>classnamecollectible</key>
 	<string>Collectible</string>
+	<key>classnamenope</key>
+	<string>Nope</string>
+	<key>classnamerepe</key>
+	<string>Repe</string>
 	<key>datastore</key>
 	<string>Parse</string>
 </dict>

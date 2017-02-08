@@ -51,6 +51,25 @@ class FacebookInfoImpl: FacebookInfoDAO {
     }
     
     
+    func logInInBackground(withReadPermissions: [String], withFunction theFunction: @escaping ([String : Any])->()) {
+        PFFacebookUtils.logInInBackground(withReadPermissions: withReadPermissions) { (user, error) in
+            if error != nil {
+                //process error
+                print(error.debugDescription)
+                return
+            }
+            else
+            {
+                //process ok              
+                //llamar a la funcion lambda
+                theFunction(["user" : user as Any, "error" : error as Any])
+            }
+        }
+        
+    }
+
+    
+    
     //MARK: GET  INFO
     func isUrlIntendedForFacebookSDK(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBSDKApplicationDelegate.sharedInstance().application(

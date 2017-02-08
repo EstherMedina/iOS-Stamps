@@ -114,7 +114,33 @@ class UserInfoImpl: UserInfoDAO {
         
     }
     
+    func getUsersIdInRadius(radius: Double)  {
+        
+        if let loc = PFUser.current()!["location"] {
+            let location = loc as? PFGeoPoint
+            let query = PFQuery(className: self.plistData["classnameuser"]! as! String)
+            query.whereKey("location", nearGeoPoint: location!, withinKilometers: radius)
+            
+            query.findObjectsInBackground { (objects, error) in
+                if error == nil {
+                    for object in objects! {
+                        let username = (object["username"] != nil) ? (object["username"] as! String) : ""
+                        
+                        let infoAll = User(objectId: username, name: "", nickname: "", email: "")
+                        
+                        NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameUsersIdInRadius), object: nil, userInfo: ["userInfo" : infoAll])
+                        
+                    } //for
+                } else {
+                    print(error.debugDescription)
+                }
+            }
+        }
+
+    }
     
+    
+    //TODO
     func getUsers() -> [User] {
         return []
     }
