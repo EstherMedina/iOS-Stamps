@@ -71,15 +71,17 @@ class ProfileVC: UIViewController{
     }
     
     //MARK: LOGOUT
-    func AuxiliaryLogOut(notification: NSNotification) {
-        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+    func AuxiliaryLogOut() {
         
         performSegue(withIdentifier: "logout", sender: nil)
     }
     
     @IBAction func logout(_ sender: UIBarButtonItem) {
-        NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.AuxiliaryLogOut), name: NSNotification.Name(rawValue: DAOFactory.notificationNamelogOutInBackgroundBlock), object: nil)
-        userInfoDAO?.logOutInBackgroundBlock()
+        userInfoDAO?.logOutInBackgroundBlock(withFunction: { () in
+            
+            self.AuxiliaryLogOut()
+            
+        })
 
         
         
@@ -118,35 +120,14 @@ class ProfileVC: UIViewController{
             }
             
             ControllerHelper.startActivityIndicator(loading: loading, view: self.view, style: UIActivityIndicatorViewStyle.whiteLarge)
-            self.userInfoDAO?.saveCurrentUserFromFBDict(dict: dict as [String : AnyObject])
+            self.userInfoDAO?.saveCurrentUserFromFBDict(dict: dict as [String : AnyObject], withFunction: { () in
+                
+                print("Cambios Almacenados!")
+                
+            })
             ControllerHelper.stopActivityIndicator(loading: loading)
             
             
-             /*if self.userImageView.image != nil {
-                 let imageData = UIImageJPEGRepresentation(self.userImageView.image!, 0.8)
-                 let imageFile = PFFile(name: "image.jpg", data: imageData!)
-                 userObject?["image"] = imageFile
-             }
-             
-             userObject?.gender = self.swichGender.isOn
-             if self.nameTextField.text != "" {
-                userObject?.nickname = self.nameTextField.text!
-             }
-             
-             if self.radiusOfInterestLabel.text != "" {
-                userObject?.radius = Double(self.radiusOfInterestLabel.text!)!
-             }
-             
-             self.startActivityIndicator()
-             userObject?.saveInBackground(block: { (success, error) in
-                 if error != nil {
-                    self.sendAlert(title: "No se ha gurdado el usuario", message: (error?.localizedDescription)!)
-                 } else {
-                    print("birthdate del usuario grabado")
-                    self.sendAlert(title: "Usuario Actualizado", message: "Tu perfil de usuario se ha actualizado correctamente")
-                 }
-                 self.stopActivityIndicator()
-             })*/
         }
      }
     
@@ -155,60 +136,56 @@ class ProfileVC: UIViewController{
 
     
     //MARK: GET CURRENT USER
-    func AuxiliaryGetCurrentUser(notification: NSNotification) {
-        NotificationCenter.default.removeObserver(self, name: notification.name, object: nil)
+    func AuxiliaryGetCurrentUser(userInfo: [String : User]) {
         
-        if let notificationData = notification.userInfo as? [String : Any] {
-            let user = notificationData["user"] as! User
-            
-            self.currentUser = user
+        
+        let user = userInfo["user"]
+        
+        self.currentUser = user
 
-            //nombre
-            self.nameTextField.text = self.currentUser?.nickname
-            
-            //email
-            self.emailTextField.text = self.currentUser?.email
-            
-            //sexo
-            if let gender = self.currentUser?.gender {
-                if gender == true {
-                    self.swichGender.isOn = true
-                    self.gender.text = "Mujer"
-                } else {
-                    self.swichGender.isOn = false
-                    self.gender.text = "Hombre"
-                }
+        //nombre
+        self.nameTextField.text = self.currentUser?.nickname
+        
+        //email
+        self.emailTextField.text = self.currentUser?.email
+        
+        //sexo
+        if let gender = self.currentUser?.gender {
+            if gender == true {
+                self.swichGender.isOn = true
+                self.gender.text = "Mujer"
             } else {
-                self.gender.text = ""
+                self.swichGender.isOn = false
+                self.gender.text = "Hombre"
             }
-            
-            //imagen
-            self.userImageView.image = self.currentUser?.image
-            
-            //radius
-            self.radiusOfInterestLabel.text = "\(Int((self.currentUser?.radius)!))"
-            self.sliderRadius.value = Float((self.currentUser?.radius)!)
-            
-            //location
-            if let location = self.currentUser?.location {
-                self.locationValue = (location as CLLocationCoordinate2D)
-                self.location.text = "   (\(String(format: "%.2f", (self.locationValue?.latitude)!)), \(String(format: "%.2f", (self.locationValue?.longitude)!)))"
-            } else {
-                self.location.text = " (0.00, 0.00)"
-            }
-            
-
+        } else {
+            self.gender.text = ""
         }
+        
+        //imagen
+        self.userImageView.image = self.currentUser?.image
+        
+        //radius
+        self.radiusOfInterestLabel.text = "\(Int((self.currentUser?.radius)!))"
+        self.sliderRadius.value = Float((self.currentUser?.radius)!)
+        
+        //location
+        if let location = self.currentUser?.location {
+            self.locationValue = (location as CLLocationCoordinate2D)
+            self.location.text = "   (\(String(format: "%.2f", (self.locationValue?.latitude)!)), \(String(format: "%.2f", (self.locationValue?.longitude)!)))"
+        } else {
+            self.location.text = " (0.00, 0.00)"
+        }
+        
+
+        
     }
     
     
     //MARK: DEFAULT
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNamelogOutInBackgroundBlock), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: DAOFactory.notificationNameGetCurrentUser), object: nil)
+
         
         //metodo que se encarga de saber quien nos ha revelado
         if  revealViewController() != nil {
@@ -219,8 +196,9 @@ class ProfileVC: UIViewController{
         }
         
         //presentamos todos los datos que tengamos del usuario
-        NotificationCenter.default.addObserver(self, selector: #selector(ProfileVC.AuxiliaryGetCurrentUser), name: NSNotification.Name(rawValue: DAOFactory.notificationNameGetCurrentUser), object: nil)
-        userInfoDAO?.getCurrentUser()  //UsersFactory.shareInstance.currenUser
+        userInfoDAO?.getCurrentUser(withFunction: { (userInfo: [String : User]) in
+            self.AuxiliaryGetCurrentUser(userInfo: userInfo )
+        })
         
         
 
@@ -279,28 +257,6 @@ class ProfileVC: UIViewController{
         
         return infoCompleted
     }
-    
-    /*
-    func isValidEmail(email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        
-        return emailTest.evaluate(with: email)
-    }*/
-
-    
-    
-    
-    /*func sendAlert(title: String, message: String){
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(okAction)
-        
-        self.present(alertController, animated: true, completion: nil)
-    }*/
-    
-    
     
     
     

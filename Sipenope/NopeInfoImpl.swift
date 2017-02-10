@@ -32,7 +32,7 @@ class NopeInfoImpl: NopeInfoDAO {
         object.saveInBackground()
     }
     
-    func loadNopeFromCollection(username: String, collectionId: String) {
+    func loadNopeFromCollection(username: String, collectionId: String, withFunction theFunction: @escaping ([String : Nope])->()) {
         let query = PFQuery(className: self.plistData["classnamenope"]! as! String)
         query.whereKey("collectionId", equalTo: collectionId )
         query.whereKey("username", equalTo: username )
@@ -43,7 +43,7 @@ class NopeInfoImpl: NopeInfoDAO {
                     
                     let nopeInfoAll = Nope(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadNopeFromCollection), object: nil, userInfo: ["nopeInfo" : nopeInfoAll])
+                    theFunction(["nopeInfo" : nopeInfoAll])
                     
                 } //for
             } else {
@@ -52,7 +52,7 @@ class NopeInfoImpl: NopeInfoDAO {
         }
     }
     
-    func loadNope(username: String) {
+    func loadNope(username: String, withFunction theFunction: @escaping ([String : Nope])->()) {
         let query = PFQuery(className: self.plistData["classnamenope"]! as! String)
         query.whereKey("username", equalTo: username )
         
@@ -65,7 +65,7 @@ class NopeInfoImpl: NopeInfoDAO {
                     
                     let nopeInfoAll = Nope(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadNope), object: nil, userInfo: ["nopeInfo" : nopeInfoAll])
+                    theFunction(["nopeInfo" : nopeInfoAll])
                     
                 } //for
             } else {
@@ -74,7 +74,7 @@ class NopeInfoImpl: NopeInfoDAO {
         }
     }
     
-    func loadNope(username: String, otherCollectibleId: String) {
+    func loadNope(username: String, otherCollectibleId: String, withFunction theFunction: @escaping ([String : Nope])->()) {
         let query = PFQuery(className: self.plistData["classnamenope"]! as! String)
         query.whereKey("username", equalTo: username )
         query.whereKey("collectibleId", equalTo: otherCollectibleId )
@@ -88,7 +88,7 @@ class NopeInfoImpl: NopeInfoDAO {
                     
                     let nopeInfoAll = Nope(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadNopeAll), object: nil, userInfo: ["nopeInfo" : nopeInfoAll])
+                    theFunction(["nopeInfo" : nopeInfoAll])
                     
                 } //if
             } else {
@@ -98,7 +98,7 @@ class NopeInfoImpl: NopeInfoDAO {
     }
 
     
-    func loadNopeAllUsers() {
+    func loadNopeAllUsers(withFunction theFunction: @escaping ([String : Nope])->()) {
         let query = PFQuery(className: self.plistData["classnamenope"]! as! String)
         
         query.findObjectsInBackground { (objects, error) in
@@ -110,7 +110,7 @@ class NopeInfoImpl: NopeInfoDAO {
                     
                     let nopeInfoAll = Nope(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadNopeAllUsers), object: nil, userInfo: ["nopeInfo" : nopeInfoAll])
+                    theFunction(["nopeInfo" : nopeInfoAll])
                     
                 } //for
             } else {

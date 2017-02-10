@@ -33,24 +33,7 @@ class FacebookInfoImpl: FacebookInfoDAO {
         FBSDKAppEvents.activateApp()
     }
     
-    func logInInBackground(withReadPermissions: [String]) {
-        PFFacebookUtils.logInInBackground(withReadPermissions: withReadPermissions) { (user, error) in
-            if error != nil {
-                //process error
-                print(error.debugDescription)
-                return
-            }
-            else
-            {
-                //process ok
-                //mandar notificacion
-                NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLogInBackground), object: nil, userInfo: ["user" : user as Any, "error" : error as Any])
-            } 
-        }
-        
-    }
-    
-    
+       
     func logInInBackground(withReadPermissions: [String], withFunction theFunction: @escaping ([String : Any])->()) {
         PFFacebookUtils.logInInBackground(withReadPermissions: withReadPermissions) { (user, error) in
             if error != nil {
@@ -60,9 +43,9 @@ class FacebookInfoImpl: FacebookInfoDAO {
             }
             else
             {
-                //process ok              
+                //process ok
                 //llamar a la funcion lambda
-                theFunction(["user" : user as Any, "error" : error as Any])
+                theFunction(["user" : user as Any , "error" : error as AnyObject])
             }
         }
         
@@ -97,7 +80,7 @@ class FacebookInfoImpl: FacebookInfoDAO {
     }
     
     
-    func callFBSDKGraphRequest() {
+    func callFBSDKGraphRequest(withFunction theFunction: @escaping ([String : Any])->()) {
         let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"])
         //let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"username"])
         //let request = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"username"], tokenString: nil, version: nil, httpMethod: "GET")
@@ -106,21 +89,10 @@ class FacebookInfoImpl: FacebookInfoDAO {
                 let dict = result as! [String : AnyObject]
                 
                 //process ok
-                //mandar notificacion
-                NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil, userInfo: ["dict" : dict as [String : AnyObject]])
+                theFunction(["dict" : dict as [String : AnyObject]])
             }
 
         })
-        /*FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name,picture.width(480).height(480)"]).start(completionHandler: { (connection, result, error) -> Void in
-            if (error == nil){
-                let dict = result as! [String : AnyObject]
-                
-                //process ok
-                //mandar notificacion
-                NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameCallFBSDKGraphRequest), object: nil, userInfo: ["dict" : dict as [String : AnyObject]])
-            }
-        })
-        */
     }
     
 }

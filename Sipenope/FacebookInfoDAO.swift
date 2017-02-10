@@ -27,10 +27,8 @@ protocol FacebookInfoDAO {
     
     func isCurrentAccessTokenNil() -> Bool
     
-    func logInInBackground(withReadPermissions: [String])
-    
     func logInInBackground(withReadPermissions: [String], withFunction theFunction: @escaping ([String : Any])->())
     
-    func callFBSDKGraphRequest()
+    func callFBSDKGraphRequest(withFunction theFunction: @escaping ([String : Any])->())
 }
 

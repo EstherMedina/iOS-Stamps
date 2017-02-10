@@ -35,7 +35,7 @@ class MessageInfoImpl: MessageInfoDAO {
     }
 
     
-    func loadMessages(userId: String, myUserId: String) {
+    func loadMessages(userId: String, myUserId: String, withFunction theFunction: @escaping ([String : Message])->()) {
         
         let querySender = PFQuery(className: self.plistData["classnamemessage"]! as! String)
         querySender.whereKey("senderId", equalTo: userId )
@@ -59,7 +59,7 @@ class MessageInfoImpl: MessageInfoDAO {
                     
                     let messageInfo = Message(objectId: "", senderId: senderId, receiverId: receiverId, message: messageText, image: nil, creationDate: dateMessage!)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadMessages), object: nil, userInfo: ["messageInfo" : messageInfo])
+                    theFunction(["messageInfo" : messageInfo])
                     
                 } //for
                 

@@ -34,6 +34,9 @@
             <PersistentString
                value = "PFUser.current()">
             </PersistentString>
+            <PersistentString
+               value = "(PFUser.current()!.username)!">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -56,14 +59,6 @@
          contextName = "MapVC.viewDidLoad() -&gt; ():MapVC.swift">
       </ContextState>
       <ContextState
-         contextName = "LoginVC.(forgotPasswordPressed(AnyObject) -&gt; ()).(closure #2).(closure #1):LoginVC.swift">
-         <PersistentStrings>
-            <PersistentString
-               value = "error.debugDescription">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "static ReadCSVFiles.runFunctionOnRowsFromFile(theColumnNames : [String], withFileName : String, withFunction : ([String : String]) -&gt; ()) -&gt; ():ReadCSVFiles.swift">
          <PersistentStrings>
             <PersistentString
@@ -80,6 +75,17 @@
             </PersistentString>
             <PersistentString
                value = "NSString(contentsOfFile: strBundle, encoding: String.Encoding.utf8.rawValue)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginVC.(forgotPasswordPressed(AnyObject) -&gt; ()).(closure #2).(closure #1):LoginVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.debugDescription">
+            </PersistentString>
+            <PersistentString
+               value = "userInfo[&quot;error&quot;].debugDescription">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -133,10 +139,10 @@
          contextName = "ChatVC.requestMessages(notification : NSNotification) -&gt; ():chatVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "messageInfo?.senderId ">
+               value = "messageInfo?.receiverId">
             </PersistentString>
             <PersistentString
-               value = "messageInfo?.receiverId">
+               value = "messageInfo?.senderId ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -237,10 +243,29 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "FacebookInfoImpl.(logInInBackground(withReadPermissions : [String], withFunction : ([String : Any]) -&gt; ()) -&gt; ()).(closure #1):FacebookInfoImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "withReadPermissions">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CollectibleInfoImpl.setNewCollectibleInBackground(collectibleId : String, collectibleName : String, collectibleImage : UIImage?, collectibleCategory : String, collectibleInfo : String, collectionId : String) -&gt; ():CollectibleInfoImpl.swift">
          <PersistentStrings>
             <PersistentString
                value = "self.plistData[&quot;classnamecollectible&quot;]! as! String">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginVC.AuxiliaryLoginFacebook(userInfo : [String : Any]) -&gt; ():LoginVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userInfo[&quot;user&quot;] ">
+            </PersistentString>
+            <PersistentString
+               value = "userInfo[&quot;user&quot;] as? PFUser">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -327,13 +352,13 @@
          contextName = "LoginVC.viewDidAppear(Bool) -&gt; ():LoginVC.swift">
          <PersistentStrings>
             <PersistentString
-               value = "FBSDKAccessToken.current()">
+               value = "facebookInfoDAO?.isCurrentAccessTokenNil()">
             </PersistentString>
             <PersistentString
                value = "userInfoDAO?.isCurrentUserNil()">
             </PersistentString>
             <PersistentString
-               value = "facebookInfoDAO?.isCurrentAccessTokenNil()">
+               value = "FBSDKAccessToken.current()">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -348,6 +373,28 @@
          <PersistentStrings>
             <PersistentString
                value = "self.facebookInfoDAO?.activateApp()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginVC.AuxiliaryAlertOrSegue(userInfo : [String : Any]) -&gt; ():LoginVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "(error as? Error).localizedDescription">
+            </PersistentString>
+            <PersistentString
+               value = "(userInfo[&quot;error&quot;] as? Error)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginVC.(facebookPressed(AnyObject) -&gt; ()).(closure #1):LoginVC.swift">
+      </ContextState>
+      <ContextState
+         contextName = "UserInfoImpl.(requestPasswordResetForEmail(email : String, alert : Alert, withFunction : ([String : Any]) -&gt; ()) -&gt; ()).(closure #1):UserInfoImpl.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "error.debugDescription">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -386,6 +433,20 @@
          <PersistentStrings>
             <PersistentString
                value = "PFUser.current()?.username">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "static ReadCSVFiles.(loadCollectablesFromCSV() -&gt; ()).(closure #1):ReadCSVFiles.swift">
+      </ContextState>
+      <ContextState
+         contextName = "LoginVC.AuxiliaryForgotPasswordPressed(userInfo : [String : Any]) -&gt; ():LoginVC.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "userInfo[&quot;error&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "userInfo[&quot;error&quot;] as? Error">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

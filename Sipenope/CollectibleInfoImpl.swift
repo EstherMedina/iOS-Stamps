@@ -38,7 +38,7 @@ class CollectibleInfoImpl: CollectibleInfoDAO {
         
     }
     
-    func loadCollectiblesFromCollection(collectionId: String) {
+    func loadCollectiblesFromCollection(collectionId: String, withFunction theFunction: @escaping ([String : Collectible])->()) {
         let query = PFQuery(className: self.plistData["classnamecollectible"]! as! String)
         query.whereKey("collectionId", equalTo: collectionId )
 
@@ -54,7 +54,7 @@ class CollectibleInfoImpl: CollectibleInfoDAO {
                     
                     let collectibleInfoAll = Collectible(collectibleId: collectibleId, collectibleName: collectibleName, collectibleCategory: collectibleCategory, collectionId: collectionId, collectibleImage: nil, collectibleInfo: collectibleInfo)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadCollectiblesFromCollection), object: nil, userInfo: ["collectibleInfo" : collectibleInfoAll])
+                    theFunction(["collectibleInfo" : collectibleInfoAll])
                     
                 } //for
             } else {

@@ -17,10 +17,12 @@ protocol NopeInfoDAO {
     
     func setNewNopeInBackground(collectionId: String, collectibleId: String, username: String)
     
-    func loadNopeFromCollection(username: String, collectionId: String)
+    func loadNopeFromCollection(username: String, collectionId: String, withFunction theFunction: @escaping ([String : Nope])->())
     
-    func loadNope(username: String)
+    func loadNope(username: String, withFunction theFunction: @escaping ([String : Nope])->())
     
-    func loadNopeAllUsers()
+    func loadNope(username: String, otherCollectibleId: String, withFunction theFunction: @escaping ([String : Nope])->())
+    
+    func loadNopeAllUsers(withFunction theFunction: @escaping ([String : Nope])->())
 }
 

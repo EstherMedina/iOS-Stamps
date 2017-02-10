@@ -16,7 +16,7 @@ protocol CollectibleInfoDAO {
     init(plistData: [String: NSObject])
     
     func setNewCollectibleInBackground(collectibleId: String, collectibleName: String, collectibleImage: UIImage?, collectibleCategory: String, collectibleInfo: String, collectionId: String)
-    
-    func loadCollectiblesFromCollection(collectionId: String) 
+
+    func loadCollectiblesFromCollection(collectionId: String, withFunction theFunction: @escaping ([String : Collectible])->())
 }
 

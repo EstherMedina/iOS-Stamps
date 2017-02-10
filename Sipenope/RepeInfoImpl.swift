@@ -30,7 +30,7 @@ class RepeInfoImpl: RepeInfoDAO {
         object.saveInBackground()
     }
     
-    func loadRepeFromCollection(username: String, collectionId: String) {
+    func loadRepeFromCollection(username: String, collectionId: String, withFunction theFunction: @escaping ([String : Repe])->()) {
         let query = PFQuery(className: self.plistData["classnamerepe"]! as! String)
         query.whereKey("collectionId", equalTo: collectionId )
         query.whereKey("username", equalTo: username )
@@ -41,7 +41,7 @@ class RepeInfoImpl: RepeInfoDAO {
                     
                     let repeInfoAll = Repe(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadRepeFromCollection), object: nil, userInfo: ["repeInfo" : repeInfoAll])
+                    theFunction(["repeInfo" : repeInfoAll])
                     
                 } //for
             } else {
@@ -50,7 +50,7 @@ class RepeInfoImpl: RepeInfoDAO {
         }
     }
     
-    func loadRepe(username: String) {
+    func loadRepe(username: String, withFunction theFunction: @escaping ([String : Repe])->()) {
         let query = PFQuery(className: self.plistData["classnamerepe"]! as! String)
         query.whereKey("username", equalTo: username )
         
@@ -63,7 +63,7 @@ class RepeInfoImpl: RepeInfoDAO {
                     
                     let repeInfoAll = Repe(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadRepe), object: nil, userInfo: ["repeInfo" : repeInfoAll])
+                    theFunction(["repeInfo" : repeInfoAll])
                     
                 } //for
             } else {
@@ -72,7 +72,7 @@ class RepeInfoImpl: RepeInfoDAO {
         }
     }
     
-    func loadRepeAllUsers() {
+    func loadRepeAllUsers(withFunction theFunction: @escaping ([String : Repe])->()) {
         let query = PFQuery(className: self.plistData["classnamerepe"]! as! String)
         
         query.findObjectsInBackground { (objects, error) in
@@ -84,7 +84,7 @@ class RepeInfoImpl: RepeInfoDAO {
                     
                     let repeInfoAll = Repe(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadRepeAllUsers), object: nil, userInfo: ["repeInfo" : repeInfoAll])
+                    theFunction(["repeInfo" : repeInfoAll])
                     
                 } //for
             } else {
@@ -94,7 +94,7 @@ class RepeInfoImpl: RepeInfoDAO {
     }
     
     
-    func loadRepe(username: String, otherCollectibleId: String) {
+    func loadRepe(username: String, otherCollectibleId: String, withFunction theFunction: @escaping ([String : Repe])->()) {
         let query = PFQuery(className: self.plistData["classnamerepe"]! as! String)
         query.whereKey("username", equalTo: username )
         query.whereKey("collectibleId", equalTo: otherCollectibleId )
@@ -108,7 +108,7 @@ class RepeInfoImpl: RepeInfoDAO {
                     
                     let repeInfoAll = Repe(collectionId: collectionId, collectibleId: collectibleId, username: username)
                     
-                    NotificationCenter.default.post(name:NSNotification.Name(rawValue: DAOFactory.notificationNameLoadRepeAll), object: nil, userInfo: ["repeInfo" : repeInfoAll])
+                    theFunction(["repeInfo" : repeInfoAll])
                     
                 } //if
             } else {

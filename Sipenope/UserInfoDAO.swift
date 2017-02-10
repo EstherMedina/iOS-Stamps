@@ -15,9 +15,9 @@ protocol UserInfoDAO {
     
     init(plistData: [String: NSObject])
     
-    func getCurrentUser()
+    func getCurrentUser(withFunction theFunction: @escaping ([String : User])->())
     
-    func getUsersIdInRadius(radius: Double) 
+    func getUsersIdInRadius(radius: Double, withFunction theFunction: @escaping ([String : User])->())
 
     func getUsers() -> [User]
     
@@ -27,19 +27,21 @@ protocol UserInfoDAO {
     
     func isCurrentUserNil() -> Bool
     
+    func isUserNil(user: Any?) -> Bool
+    
     func logOutInBackground()
     
-    func logOutInBackgroundBlock()
+    func logOutInBackgroundBlock(withFunction theFunction: @escaping ()->())
     
     func isUserNew(user: Any?) -> Bool
     
-    func saveCurrentUserFromFBDict(dict: [String : AnyObject])
+    func saveCurrentUserFromFBDict(dict: [String : AnyObject], withFunction theFunction: @escaping ()->())
     
-    func createNewUser(username:String, email: String, password: String, alert: Alert)
+    func createNewUser(username:String, email: String, password: String, alert: Alert, withFunction theFunction: @escaping ([String : Any])->()) 
     
-    func logInWithUsername(username: String, password: String, alert:Alert)
+    func logInWithUsername(username: String, password: String, alert:Alert, withFunction theFunction: @escaping ([String : Any])->())
     
-    func requestPasswordResetForEmail(email: String, alert: Alert)
+    func requestPasswordResetForEmail(email: String, alert: Alert, withFunction theFunction: @escaping ([String : Any])->())
     
 }
 

@@ -11,31 +11,6 @@ import UIKit
 
 
 class DAOFactory: NSObject {
-
-    static let notificationNameLoadMessages = "MessagesLoaded"
-    static let notificationNameLogInBackground = "LogInEnded"
-    static let notificationNameCallFBSDKGraphRequest = "FBSDKGraphRequestCalled"
-    static let notificationNameCreateNewUser = "NewUserCreated"
-    static let notificationNameLogInWithUsername = "LogInWithUsernameEnded"
-    static let notificationNameRequestPasswordResetForEmail = "RequestPasswordResetForEmailEnded"
-    static let notificationNameGetCurrentUser = "GetCurrentUserEnded"
-    static let notificationNamelogOutInBackgroundBlock = "LogOutInBackgroundBlockEnded"
-    static let notificationNameSaveCurrentUserFromFBDict = "SaveCurrentUserFromFBDictEnded"
-    static let notificationNameLoadCollectiblesFromCollection = "LoadCollectiblesFromCollectionEnded"
-    static let notificationNameLoadNopeFromCollection = "LoadNopeFromCollectionEnded"
-    static let notificationNameLoadRepeFromCollection = "LoadRepeFromCollectionEnded"
-    static let notificationNameLoadNope = "LoadNopeEnded"
-    static let notificationNameLoadRepe = "LoadRepeEnded"
-    static let notificationNameLoadNopeAllUsers = "LoadNopeAllUsersEnded"
-    static let notificationNameLoadRepeAllUsers = "LoadRepeAllUsersEnded"
-    static let notificationNameLoadRepeAll = "LoadRepeAllEnded"
-    static let notificationNameLoadNopeAll = "LoadNopeAllEnded"
-    static let notificationNameUsersIdInRadius = "UsersIdInRadiusEnded"
-    
-    
-    
-    
-
     
     static let sharedInstance: DAOFactory = DAOFactory()
     var connectInfoDAO: ConnectInfoDAO?

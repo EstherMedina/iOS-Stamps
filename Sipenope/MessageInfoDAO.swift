@@ -16,7 +16,7 @@ protocol MessageInfoDAO {
     
     func setNewMessageInBackground(senderId: String, receiverId: String, message: String)
     
-    
-    func loadMessages(userId: String, myUserId: String)
+
+    func loadMessages(userId: String, myUserId: String, withFunction theFunction: @escaping ([String : Message])->())
 }
 

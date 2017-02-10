@@ -88,27 +88,30 @@ class ChatVC: JSQMessagesViewController {
     }
     
     
-    func requestMessages(notification: NSNotification) {
-        if let notificationData = notification.userInfo as? [String : Message] {
-            let messageInfo = notificationData["messageInfo"]
-            //let senderId = (messageInfo?.senderId == receiverId) ? messageInfo?.receiverId : messageInfo?.senderId
-            let senderDisplayName = (messageInfo?.senderId == senderId) ? self.senderName : self.receiverName
-            
-            let message = JSQMessage(senderId: messageInfo?.senderId, senderDisplayName: senderDisplayName, date: messageInfo?.creationDate, text: messageInfo?.message)
-            
-            self.messages.append(message!)
-            
-            self.finishReceivingMessage()
-        }
+    func requestMessages(userInfo: [String : Message]) {
+       
+        let messageInfo = userInfo["messageInfo"]
+        //let senderId = (messageInfo?.senderId == receiverId) ? messageInfo?.receiverId : messageInfo?.senderId
+        let senderDisplayName = (messageInfo?.senderId == senderId) ? self.senderName : self.receiverName
+        
+        let message = JSQMessage(senderId: messageInfo?.senderId, senderDisplayName: senderDisplayName, date: messageInfo?.creationDate, text: messageInfo?.message)
+        
+        self.messages.append(message!)
+        
+        self.finishReceivingMessage()
+        
     }
     
     
     
     private func loadMessages() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.requestMessages), name: NSNotification.Name(rawValue: DAOFactory.notificationNameLoadMessages), object: nil)
         self.messages.removeAll()
-        self.messageInfoDAO?.loadMessages(userId: self.senderId, myUserId: (self.user?.objectId)!)
+        self.messageInfoDAO?.loadMessages(userId: self.senderId, myUserId: (self.user?.objectId)!, withFunction: { (userInfo: [String : Message]) in
+            
+            self.requestMessages(userInfo: userInfo)
+            
+        })
         
         self.finishReceivingMessage()
 
